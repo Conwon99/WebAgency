@@ -111,6 +111,28 @@ All colors MUST be HSL.
   }
 }
 
+@layer base {
+  html, body, #root {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-figtree;
+  }
+
+  /* Ensure media never overflows the viewport */
+  img, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0);

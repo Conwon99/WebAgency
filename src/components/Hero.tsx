@@ -71,9 +71,10 @@ const Hero = () => {
   return (
     <>
       <section 
-        className="relative min-h-screen flex items-center justify-start bg-white overflow-x-hidden"
+        className="relative min-h-screen flex items-center justify-start overflow-x-hidden"
+        style={{ backgroundColor: '#eae6e8' }}
       >
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mt-20">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mt-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-left">
             {/* Main Headline */}
@@ -84,30 +85,19 @@ const Hero = () => {
               viewport={{ once: true, amount: 0.7 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-thicccboi font-bold !text-black mb-6 leading-tight"
             >
-              We build you a Website in a Day — No Upfront Cost, Just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span>
+              Get a Professional Website — No Upfront Cost, just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span>
             </motion.h1>
             
-            {/* CTA Buttons */}
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
               viewport={{ once: true, amount: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4 justify-start mb-8"
+              className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed"
             >
-              <Button 
-                onClick={handleFacebookClick}
-                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-              >
-                Get Started
-              </Button>
-              <Button 
-                onClick={handlePhoneClick}
-                className="bg-white hover:bg-gray-50 text-[#3b82f6] border-2 border-[#3b82f6] font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-              >
-                Schedule Demo
-              </Button>
-            </motion.div>
+              We design & build you a website upfront for free — if you like it, it's just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span>. No setup fees, no contracts, no stress. 14 day money back guarantee
+            </motion.p>
+            
 
             {/* Trust Indicators */}
             <motion.div
@@ -129,6 +119,22 @@ const Hero = () => {
                 <CheckCircle className="w-4 h-4 text-green-500" />
                 <span>Trusted by hundreds of businesses</span>
               </div>
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.35 }}
+              viewport={{ once: true, amount: 0.7 }}
+              className="mb-8"
+            >
+              <Button 
+                onClick={handlePhoneClick}
+                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
+              >
+                Book a free call
+              </Button>
             </motion.div>
 
             {/* Google Review */}
@@ -182,7 +188,7 @@ const Hero = () => {
               >
                 <dotlottie-wc 
                   src="https://lottie.host/8fc39289-f2b3-499d-8c21-9a0e0298e20c/zyltaQ3EPT.lottie" 
-                  style={{width: '300px', height: '300px'}} 
+                  style={{width: '500px', height: '500px'}} 
                   autoplay 
                   loop
                 />
@@ -193,7 +199,7 @@ const Hero = () => {
       </section>
 
       {/* Testimonial Quote */}
-      <section className="py-16 bg-white overflow-x-hidden">
+      <section className="py-16 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -210,27 +216,31 @@ const Hero = () => {
       </section>
 
       {/* Layered Wave Section */}
-      <section className="relative bg-white overflow-x-hidden hide-scrollbar">
+      <section className="relative overflow-x-hidden hide-scrollbar" style={{ backgroundColor: '#eae6e8' }}>
         {/* Top Wave */}
-        <img src="/layered-wave.svg" alt="wave top" className="block w-full rotate-180 -mt-px" aria-hidden="true" />
+        <svg className="block w-full rotate-180" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#3b82f6" opacity="0.25"/>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="#3b82f6" opacity="0.5"/>
+          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#3b82f6"/>
+        </svg>
 
         {/* Text above rectangle */}
-        <div className="w-full bg-gray-900 py-2 hide-scrollbar">
+        <div className="w-full py-2 hide-scrollbar" style={{ backgroundColor: '#3b82f6', marginTop: '-1px' }}>
           <div className="text-center">
-            <p className="text-gray-300 font-figtree font-medium text-xs sm:text-sm">
+            <p className="text-white font-figtree font-medium text-xs sm:text-sm">
               Proven results with 10+ satisfied clients across diverse industries
             </p>
           </div>
         </div>
 
         {/* Center Rectangle */}
-        <div className="w-full bg-gray-900 h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 flex items-center justify-center overflow-x-hidden overflow-y-hidden hide-scrollbar">
+        <div className="w-full h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 flex items-center justify-center overflow-x-hidden overflow-y-hidden hide-scrollbar" style={{ backgroundColor: '#3b82f6' }}>
           <div className="flex animate-scroll space-x-8 sm:space-x-12 lg:space-x-16 hide-scrollbar" style={{ overflow: 'hidden' }}>
             {/* Company Logo Placeholders */}
             {Array.from({ length: 8 }, (_, i) => (
               <div key={i} className="flex-shrink-0 flex items-center justify-center">
-                <div className="bg-gray-700 rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
-                  <span className="text-gray-300 font-figtree font-medium text-xs sm:text-sm">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
+                  <span className="text-white font-figtree font-medium text-xs sm:text-sm">
                     Company {i + 1}
                   </span>
                 </div>
@@ -239,8 +249,8 @@ const Hero = () => {
             {/* Duplicate for seamless loop */}
             {Array.from({ length: 8 }, (_, i) => (
               <div key={`duplicate-${i}`} className="flex-shrink-0 flex items-center justify-center">
-                <div className="bg-gray-700 rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
-                  <span className="text-gray-300 font-figtree font-medium text-xs sm:text-sm">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
+                  <span className="text-white font-figtree font-medium text-xs sm:text-sm">
                     Company {i + 1}
                   </span>
                 </div>
@@ -250,11 +260,15 @@ const Hero = () => {
         </div>
 
         {/* Bottom Wave */}
-        <img src="/layered-wave.svg" alt="wave bottom" className="block w-full -mb-px" aria-hidden="true" />
+        <svg className="block w-full -mb-px" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#3b82f6" opacity="0.25"/>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="#3b82f6" opacity="0.5"/>
+          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#3b82f6"/>
+        </svg>
       </section>
 
       {/* Google Reviews Slider */}
-      <section className="py-16 bg-gray-900 overflow-x-hidden">
+      <section className="py-16 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Navigation Arrows */}
@@ -280,7 +294,7 @@ const Hero = () => {
               >
                 {reviews.map((review, index) => (
                   <div key={review.id} className="w-full flex-shrink-0 px-2 sm:px-4">
-                    <div className="bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
+                    <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto shadow-lg">
                       <div className="flex items-start justify-between mb-6">
                         <div className="flex items-center gap-4">
                           {/* Avatar */}
@@ -288,8 +302,8 @@ const Hero = () => {
                             {review.avatar}
                           </div>
                           <div>
-                            <h3 className="text-blue-400 font-semibold text-lg">{review.name}</h3>
-                            <p className="text-gray-400 text-sm">{review.date}</p>
+                            <h3 className="text-gray-900 font-semibold text-lg">{review.name}</h3>
+                            <p className="text-gray-600 text-sm">{review.date}</p>
                           </div>
                         </div>
                         {/* Google Logo */}
@@ -313,10 +327,10 @@ const Hero = () => {
                 </div>
 
                       {/* Review Text */}
-                      <p className="text-white text-base sm:text-lg leading-relaxed">
+                      <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
                         {review.text}
                         {review.text.length > 200 && (
-                          <span className="text-gray-400 ml-2 cursor-pointer hover:text-gray-300">
+                          <span className="text-gray-500 ml-2 cursor-pointer hover:text-gray-400">
                             Read more
                           </span>
                         )}
@@ -345,10 +359,144 @@ const Hero = () => {
             </div>
       </section>
 
-      {/* Monthly Report Section */}
-      <section className="py-20 bg-white overflow-x-hidden">
+      {/* Affordable, Fast and Risk-Free Section */}
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 font-thicccboi">
+                It's affordable, fast and it's risk-free
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                CD web design replaces unreliable freelancers and expensive agencies for one flat monthly fee, with websites and support delivered so fast you won't want to go anywhere else.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {/* Card 1 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/Calendar..png" 
+                    alt="Calendar Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+
+                {/* Card 2 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/call.png" 
+                    alt="Call Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+
+                {/* Card 3 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/tick.png" 
+                    alt="Tick Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Steps */}
+              <div className="mt-12 max-w-4xl mx-auto">
+                <div className="space-y-8">
+                  {/* Step 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.4 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      1
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      Book a call with us and send us your business details.
+                    </p>
+                  </motion.div>
+
+                  {/* Step 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      2
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      Show you a live demo of your website. You can find the details.
+                    </p>
+                  </motion.div>
+
+                  {/* Step 3 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.6 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      3
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      We get the website launched within 48 hours. 14-day money-back guarantee
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Monthly Report Section */}
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Right - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-left order-1 lg:order-2"
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-6 font-thicccboi leading-tight">
+                Know What's Working, <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">Instantly</span>
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 font-figtree leading-relaxed">
+                Get real-time analytics on traffic, leads, and messages so you can see what's driving results — and make smarter business decisions fast.
+              </p>
+            </motion.div>
+
             {/* Left - Mobile Image */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -360,32 +508,214 @@ const Hero = () => {
               <img
                 src="/phone.png"
                 alt="Mobile analytics preview"
-                className="mx-auto lg:mx-0 rounded-2xl shadow-2xl max-w-full w-[720px] sm:w-[960px] md:w-[1120px] lg:w-[1280px] xl:w-[1440px]"
+                className="mx-auto lg:mx-0 max-w-full w-[800px] sm:w-[1000px] md:w-[1200px] lg:w-[1400px] xl:w-[1600px]"
                 loading="lazy"
+                style={{ backgroundColor: 'transparent' }}
               />
             </motion.div>
+          </div>
+        </div>
+      </section>
 
-            {/* Right - Text */}
+      {/* Affordable, Fast and Risk-Free Section */}
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true, amount: 0.3 }}
-              className="text-left order-1 lg:order-2"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-thicccboi leading-tight">
-                Know What’s Working, Instantly
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 font-thicccboi">
+                It's affordable, fast and it's risk-free
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 font-figtree leading-relaxed">
-                Get real-time analytics on traffic, leads, and messages so you can see what’s driving results — and make smarter business decisions fast.
+              <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                CD web design replaces unreliable freelancers and expensive agencies for one flat monthly fee, with websites and support delivered so fast you won't want to go anywhere else.
               </p>
+              
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {/* Card 1 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/Calendar..png" 
+                    alt="Calendar Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+
+                {/* Card 2 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/call.png" 
+                    alt="Call Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+
+                {/* Card 3 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <img 
+                    src="/cards/tick.png" 
+                    alt="Tick Card" 
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Steps */}
+              <div className="mt-12 max-w-4xl mx-auto">
+                <div className="space-y-8">
+                  {/* Step 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.4 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      1
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      Book a call with us and send us your business details.
+                    </p>
+                  </motion.div>
+
+                  {/* Step 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      2
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      Show you a live demo of your website. You can find the details.
+                    </p>
+                  </motion.div>
+
+                  {/* Step 3 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.6 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      3
+                    </div>
+                    <p className="text-lg sm:text-xl text-gray-700 leading-relaxed pt-2">
+                      We get the website launched within 48 hours. 14-day money-back guarantee
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-16 font-thicccboi">
+                Our <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">Portfolio</span>
+              </h2>
+              
+              <div className="overflow-x-auto hide-scrollbar">
+                <div className="flex gap-8 pb-4" style={{ width: 'max-content' }}>
+                  {/* Portfolio Item 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-shrink-0 w-80"
+                  >
+                    <img 
+                      src="/Portfolio/able_compressed.webp" 
+                      alt="Able Health Website" 
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Able Health</h3>
+                      <p className="text-gray-600">Professional healthcare website design</p>
+                    </div>
+                  </motion.div>
+
+                  {/* Portfolio Item 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-shrink-0 w-80"
+                  >
+                    <img 
+                      src="/Portfolio/holistics71.com_(Portfolio)_compressed.webp" 
+                      alt="Holistics71 Website" 
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Holistics71</h3>
+                      <p className="text-gray-600">Modern holistic wellness platform</p>
+                    </div>
+                  </motion.div>
+
+                  {/* Portfolio Item 3 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-shrink-0 w-80"
+                  >
+                    <img 
+                      src="/Portfolio/ProRoof.png" 
+                      alt="ProRoof Website" 
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">ProRoof</h3>
+                      <p className="text-gray-600">Roofing services website</p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="relative py-16 bg-white overflow-x-hidden">
+      <div className="relative py-16 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center">
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
@@ -395,267 +725,113 @@ const Hero = () => {
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Free Preview & Demo Section */}
-      <section className="py-20 bg-gray-50 overflow-x-hidden">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Large Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="text-left"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 font-thicccboi leading-tight">
-                Get a free preview & Demo of your website — <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">no strings attached</span>
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                See exactly what your website will look like before you commit. Watch our founder demonstrate the process with a real client.
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-[#3b82f6] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white font-bold text-sm">1</span>
-                  </div>
-                  <p className="text-gray-700">Book a call.</p>
-            </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-[#3b82f6] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white font-bold text-sm">2</span>
-                  </div>
-                  <p className="text-gray-700">Send your business social media profiles.</p>
-            </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-[#3b82f6] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white font-bold text-sm">3</span>
-                  </div>
-                  <p className="text-gray-700">We build you a free website to review.</p>
                 </div>
               </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  onClick={handleFacebookClick}
-                  className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-                >
-                  Watch Free Demo
-                </Button>
-                <Button 
-                  onClick={handlePhoneClick}
-                  className="bg-white hover:bg-gray-50 text-[#3b82f6] border-2 border-[#3b82f6] font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-                >
-                  Get Your Preview
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* Right Side - Video */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="relative mt-8 lg:mt-0"
-            >
-              <div className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-                {/* Video Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-blue-600 transition-colors cursor-pointer">
-                      <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                      </svg>
-                    </div>
-                    <p className="text-white text-base sm:text-lg font-semibold">Watch Demo Video</p>
-                    <p className="text-gray-400 text-xs sm:text-sm">Click to play</p>
-              </div>
             </div>
-
-                {/* Video Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-20 hover:bg-opacity-10 transition-all duration-300 cursor-pointer"></div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Analytics & Support Section */}
-      <section className="py-20 bg-white overflow-x-hidden">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-thicccboi leading-tight"
-            >
-              Know exactly how many clients you are getting with <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">ongoing support & analytics</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
-            >
-              Track your website's performance and see real results with detailed analytics and continuous support.
-            </motion.p>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-4 sm:mt-8 flex justify-center"
-          >
-            <img
-              src="/phone.png"
-              alt="Phone mockup with analytics preview"
-              className="w-full max-w-xl sm:max-w-2xl rounded-2xl shadow-lg ring-1 ring-white/10"
-              loading="lazy"
-            />
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Analytics Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 font-thicccboi">Detailed Analytics</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Track visitor behavior, conversion rates, and see exactly which pages are driving the most clients to your business.
-              </p>
-            </motion.div>
-
-            {/* Support Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 font-thicccboi">Ongoing Support</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Get continuous support and updates to keep your website performing at its best and generating more clients.
-              </p>
-            </motion.div>
-
-            {/* Results Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1"
-            >
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 font-thicccboi">Real Results</h3>
-              <p className="text-gray-600 leading-relaxed">
-                See measurable improvements in your client acquisition with clear metrics and performance tracking.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center mt-12"
-          >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={handleFacebookClick}
-                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-              >
-                Get Started Today
-              </Button>
-              <Button 
-                onClick={handlePhoneClick}
-                className="bg-white hover:bg-gray-50 text-[#3b82f6] border-2 border-[#3b82f6] font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-              >
-                Learn More
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* How it Works Section */}
-      <section className="py-20 bg-white overflow-x-hidden">
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-left">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-12 font-thicccboi">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-16 font-thicccboi">
                   How it <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">works</span>
                 </h2>
                 
-              <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="max-w-4xl text-left">
+                <div className="space-y-16">
                   {/* Step 1 */}
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#3b82f6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
-                      1
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-center gap-12"
+                  >
+                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
+                      <img src="/blobs/blob.svg" alt="Step 1" className="w-full h-full object-contain" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-white font-bold text-3xl">1</span>
+                      </div>
                     </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 font-thicccboi">Get Your Free Quote</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Contact us via phone, WhatsApp, or Facebook Messenger for a free, no-obligation quote tailored to your needs.
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Send Business Details</h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        Send us your business details and requirements for your website.
                       </p>
-                  </div>
+                    </div>
+                  </motion.div>
 
                   {/* Step 2 */}
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#3b82f6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
-                      2
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-center gap-12"
+                  >
+                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
+                      <img src="/blobs/blob (1).svg" alt="Step 2" className="w-full h-full object-contain" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-white font-bold text-3xl">2</span>
+                      </div>
                     </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 font-thicccboi">Schedule Your Service</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Choose a convenient time that works for you. We offer flexible scheduling including same-day service.
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Book a Call & Demo</h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        Book a call and receive a free website demo tailored to your business.
                       </p>
-                  </div>
+                    </div>
+                  </motion.div>
 
                   {/* Step 3 */}
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#3b82f6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
-                      3
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-center gap-12"
+                  >
+                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
+                      <img src="/blobs/blob (2).svg" alt="Step 3" className="w-full h-full object-contain" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-white font-bold text-3xl">3</span>
+                      </div>
                     </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 font-thicccboi">Enjoy Your Clean Space</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Our professional team arrives on time with all equipment and supplies to deliver exceptional results.
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Set Up Payment</h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        If you like the website, set up the payment for 2 weeks' time.
                       </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Step 4 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.4 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="flex items-center gap-12"
+                  >
+                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
+                      <img src="/blobs/blob (3).svg" alt="Step 4" className="w-full h-full object-contain" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-white font-bold text-3xl">4</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Receive Your Website</h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        Receive your website within 48 hours of payment setup.
+                      </p>
+                    </div>
+                  </motion.div>
                   </div>
                 </div>
 

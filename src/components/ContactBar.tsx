@@ -6,12 +6,12 @@ const ContactBar = () => {
   const { phone, facebookUrl } = useBusiness();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-cleaning-border shadow-sm md:hidden">
+    <div className="fixed top-0 left-0 right-0 z-50 border-b border-cleaning-border shadow-sm md:hidden" style={{ backgroundColor: '#eae6e8' }}>
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center space-x-2">
           <img 
-            src="/Sparkleslogo.png" 
-            alt="Sparkles Logo"
+            src="/C logo.png" 
+            alt="C Logo"
             className="h-8 w-auto"
           />
           <span className="text-sm font-medium text-cleaning-text">
