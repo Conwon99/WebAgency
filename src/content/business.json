@@ -1,0 +1,32 @@
+{
+  "name": "Sparkles",
+  "location": "Ayr, United Kingdom",
+  "phone": "+44 7483 879647",
+  "phoneVerified": false,
+  "email": "2204sparkles@gmail.com",
+  "tagline": "Professional cleaning services tailored to your needs.",
+  "services": [
+    "AIR B&B's",
+    "End of tenancy",
+    "Deep cleans",
+    "One off cleans",
+    "Cleans tailored to you",
+    "Rubbish Removal & sanitisation",
+    "Carpet & sofa cleans to freshen up your upholstery's",
+    "Free quotation cleaning service"
+  ],
+  "pricing": [
+    {
+      "label": "One-off deep clean",
+      "from": 80,
+      "currency": "GBP",
+      "note": "Starting from"
+    },
+    {
+      "label": "End of tenancy clean",
+      "from": 120,
+      "currency": "GBP",
+      "note": "Starting from"
+    }
+  ]
+} 
