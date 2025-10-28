@@ -5,11 +5,38 @@ import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackCTA } from "@/lib/analytics";
 import { useState, useEffect } from "react";
-import HomeServices from "./HomeServices";
 
 const Hero = () => {
   const { phone, facebookUrl } = useBusiness();
   const [currentReview, setCurrentReview] = useState(0);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+  const faqData = [
+    {
+      question: "How long does it take to get my website?",
+      answer: "We typically deliver your website within 48 hours of payment setup. Our team works efficiently to get your professional website live quickly."
+    },
+    {
+      question: "What's included in the £79/month?",
+      answer: "Everything! Design, development, hosting, maintenance, updates, SEO optimization, analytics tracking, and ongoing support. No hidden fees or extra costs."
+    },
+    {
+      question: "How are payments done?",
+      answer: "Payments are done through Stripe, which takes a monthly fee. However, we can work with your preferences and discuss alternative payment methods if needed."
+    },
+    {
+      question: "What if I don't like my website?",
+      answer: "We offer a 14-day money-back guarantee. If you're not 100% satisfied, we'll refund your payment - no questions asked."
+    },
+    {
+      question: "Can you help with SEO and getting found on Google?",
+      answer: "Absolutely! We optimize your website for local searches, ensure mobile-first design, optimize page speed, and help manage your Google reviews to improve your rankings."
+    },
+    {
+      question: "What if I need changes after launch?",
+      answer: "No problem! We include unlimited revisions and updates in your monthly fee. Need content changes, new pages, or design tweaks? We've got you covered."
+    }
+  ];
 
   // Load Lottie script
   useEffect(() => {
@@ -22,6 +49,28 @@ const Hero = () => {
       document.head.removeChild(script);
     };
   }, []);
+
+  // Load Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+    
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/your-username/your-event-type' // Replace with your actual Calendly URL
+      });
+    }
+  };
 
   const reviews = [
     {
@@ -121,7 +170,7 @@ const Hero = () => {
               className="mb-8"
             >
               <Button 
-                onClick={handlePhoneClick}
+                onClick={openCalendly}
                 className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
               >
                 Book a free call
@@ -217,7 +266,7 @@ const Hero = () => {
         {/* Text above rectangle */}
         <div className="w-full py-2 hide-scrollbar" style={{ backgroundColor: '#3b82f6', marginTop: '-1px' }}>
           <div >
-            <p className="text-white font-figtree font-medium text-xs sm:text-sm">
+            <p className="text-white font-figtree font-medium text-xs sm:text-sm text-center">
               Proven results with 10+ satisfied clients across diverse industries
             </p>
           </div>
@@ -226,25 +275,62 @@ const Hero = () => {
         {/* Center Rectangle */}
         <div className="w-full h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 flex items-center justify-center overflow-x-hidden overflow-y-hidden hide-scrollbar" style={{ backgroundColor: '#3b82f6' }}>
           <div className="flex animate-scroll space-x-8 sm:space-x-12 lg:space-x-16 hide-scrollbar" style={{ overflow: 'hidden' }}>
-            {/* Company Logo Placeholders */}
-            {Array.from({ length: 8 }, (_, i) => (
+            {/* Company Logos */}
+            {[
+              '/Logos/coffee-cup.svg',
+              '/Logos/Dirtworks Landscaping logo edited..png',
+              '/Logos/Logo with ange.png',
+              '/Logos/NK Logo no back.png',
+              '/Logos/rblogo - Edited.png',
+              '/Logos/remilogo.png',
+              '/Logos/RP - Edited.png',
+              '/Logos/sclogo.png'
+            ].map((logo, i) => (
               <div key={i} className="flex-shrink-0 flex items-center justify-center">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
-                  <span className="text-white font-figtree font-medium text-xs sm:text-sm">
-                    Company {i + 1}
-                  </span>
-                </div>
+                <img 
+                  src={logo} 
+                  alt={`Company Logo ${i + 1}`}
+                  className="max-h-9 sm:max-h-12 w-auto object-contain"
+                />
               </div>
             ))}
             {/* Duplicate for seamless loop */}
-            {Array.from({ length: 8 }, (_, i) => (
+            {[
+              '/Logos/coffee-cup.svg',
+              '/Logos/Dirtworks Landscaping logo edited..png',
+              '/Logos/Logo with ange.png',
+              '/Logos/NK Logo no back.png',
+              '/Logos/rblogo - Edited.png',
+              '/Logos/remilogo.png',
+              '/Logos/RP - Edited.png',
+              '/Logos/sclogo.png'
+            ].map((logo, i) => (
               <div key={`duplicate-${i}`} className="flex-shrink-0 flex items-center justify-center">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center justify-center min-w-[80px] sm:min-w-[100px]">
-                  <span className="text-white font-figtree font-medium text-xs sm:text-sm">
-                    Company {i + 1}
-                  </span>
-                </div>
+                <img 
+                  src={logo} 
+                  alt={`Company Logo ${i + 1}`}
+                  className="max-h-9 sm:max-h-12 w-auto object-contain"
+                />
               </div>
+            ))}
+            {/* Second duplicate for extra seamless loop */}
+            {[
+              '/Logos/coffee-cup.svg',
+              '/Logos/Dirtworks Landscaping logo edited..png',
+              '/Logos/Logo with ange.png',
+              '/Logos/NK Logo no back.png',
+              '/Logos/rblogo - Edited.png',
+              '/Logos/remilogo.png',
+              '/Logos/RP - Edited.png',
+              '/Logos/sclogo.png'
+            ].map((logo, i) => (
+              <div key={`duplicate2-${i}`} className="flex-shrink-0 flex items-center justify-center">
+                <img 
+                  src={logo} 
+                  alt={`Company Logo ${i + 1}`}
+                  className="max-h-9 sm:max-h-12 w-auto object-contain"
+                  />
+                </div>
             ))}
           </div>
         </div>
@@ -353,15 +439,15 @@ const Hero = () => {
       <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 font-thicccboi">
                 It's affordable, fast and it's risk-free
-              </h2>
+                </h2>
               <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
                 CD web design replaces unreliable freelancers and expensive agencies for one flat monthly fee, with websites and support delivered so fast you won't want to go anywhere else.
               </p>
@@ -433,6 +519,84 @@ const Hero = () => {
         </div>
       </section>
 
+      {/* Websites that Generate Clients Section */}
+      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left - Content */}
+                <div className="space-y-8">
+                <div>
+                  <h2 className="text-4xl sm:text-5xl md:text-6xl font-thicccboi font-bold text-gray-900 mb-6 leading-tight">
+                    Websites that<br />
+                    <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent">generate clients</span>
+                  </h2>
+                  <p className="text-xl text-gray-700 font-figtree leading-relaxed">
+                    We handle design, copy, SEO, analytics and ongoing support so you can focus on your business. See how many leads come in every month.
+                  </p>
+                </div>
+
+                {/* Steps */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-lg">1</span>
+                    </div>
+                    <p className="text-gray-700 font-figtree text-lg">Book a discovery call</p>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-lg">2</span>
+                    </div>
+                    <p className="text-gray-700 font-figtree text-lg">We design your free preview</p>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-lg">3</span>
+                    </div>
+                    <p className="text-gray-700 font-figtree text-lg">Launch with tracking and support</p>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    onClick={openCalendly}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-figtree font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    Start My Preview
+                  </Button>
+                  <Button 
+                    onClick={openCalendly}
+                    variant="outline"
+                    className="border-gray-600 text-gray-900 hover:bg-gray-800 hover:text-white px-8 py-4 rounded-xl font-figtree font-semibold text-lg transition-all duration-200"
+                  >
+                    Talk to Us
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right - Animation */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="relative overflow-visible">
+                  <dotlottie-wc 
+                    src="https://lottie.host/72369cf7-6a3e-4ed9-b688-83310de3fca7/drjTHpg6LN.lottie" 
+                    style={{width: '500px', height: '500px'}} 
+                    autoplay 
+                    loop
+                  ></dotlottie-wc>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Monthly Report Section */}
       <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -447,7 +611,7 @@ const Hero = () => {
             >
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-6 font-thicccboi leading-tight">
                 Know What's Working, <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">Instantly</span>
-              </h2>
+                </h2>
               <p className="text-lg sm:text-xl text-gray-600 font-figtree leading-relaxed">
                 Get real-time analytics on traffic, leads, and messages so you can see what's driving results — and make smarter business decisions fast.
               </p>
@@ -470,7 +634,7 @@ const Hero = () => {
               />
             </motion.div>
           </div>
-        </div>
+                    </div>
       </section>
 
       {/* Duplicate Layered Wave Section */}
@@ -488,11 +652,11 @@ const Hero = () => {
             <h3 className="text-white font-figtree font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4">
               14-Day Money-Back Guarantee
             </h3>
-            <p className="text-white font-figtree font-medium text-lg sm:text-xl md:text-2xl leading-relaxed">
+            <p className="text-white font-figtree font-medium text-sm sm:text-base md:text-lg leading-relaxed">
               If you're not 100% impressed, get a refund up to 14 days after signing up with our 14-day money-back guarantee.
-            </p>
-          </div>
-        </div>
+                      </p>
+                    </div>
+                  </div>
 
         {/* Bottom Wave */}
         <svg className="block w-full -mb-px" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
@@ -517,32 +681,13 @@ const Hero = () => {
               </h2>
               
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {/* Portfolio Item 1 - Large */}
+                {/* Portfolio Item 1 - Small */}
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2"
-                >
-                  <img 
-                    src="/Portfolio/tassecoffeeco.com_(port2) (1).png" 
-                    alt="Tasse Coffee Co Website" 
-                    className="w-full h-160 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Tasse Coffee Co</h3>
-                    <p className="text-gray-600">Artisan coffee company website</p>
-                  </div>
-                </motion.div>
-
-                {/* Portfolio Item 2 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <img 
                     src="/Portfolio/able_compressed.webp" 
@@ -555,13 +700,13 @@ const Hero = () => {
                   </div>
                 </motion.div>
 
-                {/* Portfolio Item 3 */}
+                {/* Portfolio Item 2 - Small */}
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <img 
                     src="/Portfolio/holistics71.com_(port2) (1).png" 
@@ -574,13 +719,32 @@ const Hero = () => {
                   </div>
                 </motion.div>
 
+                {/* Portfolio Item 3 - Large (Tasse Coffee Co) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2"
+                >
+                  <img 
+                    src="/Portfolio/tassecoffeeco.com_(port2) (1).png" 
+                    alt="Tasse Coffee Co Website" 
+                    className="w-full h-160 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Tasse Coffee Co</h3>
+                    <p className="text-gray-600">Artisan coffee company website</p>
+                    </div>
+                </motion.div>
+
                 {/* Portfolio Item 4 - Large */}
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.4 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2"
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2"
                 >
                   <img 
                     src="/Portfolio/rbjoinery.com_(port2).png" 
@@ -590,7 +754,7 @@ const Hero = () => {
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">RB Joinery</h3>
                     <p className="text-gray-600">Professional joinery and carpentry services</p>
-                  </div>
+                    </div>
                 </motion.div>
 
                 {/* Portfolio Item 5 */}
@@ -599,7 +763,7 @@ const Hero = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.5 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <img 
                     src="/Portfolio/mapletreegardenservices.com_(port2).png" 
@@ -618,7 +782,7 @@ const Hero = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.6 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <img 
                     src="/Portfolio/scautodetailing.co.uk_(port2).png" 
@@ -628,9 +792,9 @@ const Hero = () => {
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">SC Auto Detailing</h3>
                     <p className="text-gray-600">Professional car detailing services</p>
-                  </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
+            </div>
             </motion.div>
           </div>
         </div>
@@ -651,128 +815,102 @@ const Hero = () => {
               </div>
             </div>
 
-      {/* How it Works Section */}
+      {/* FAQ Section */}
       <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-left">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true, amount: 0.3 }}
-              >
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-16 font-thicccboi">
-                  How it <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">works</span>
-                </h2>
-                
-              <div className="max-w-4xl text-left">
-                <div className="space-y-16">
-                  {/*  */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="flex items-center gap-12"
-                  >
-                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
-                      <img src="/blobs/blob.svg" alt="" className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white font-bold text-3xl">1</span>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Send Business Details</h3>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        Send us your business details and requirements for your website.
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  {/*  */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="flex items-center gap-12"
-                  >
-                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
-                      <img src="/blobs/blob (1).svg" alt="" className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white font-bold text-3xl">2</span>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Book a Call & Demo</h3>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        Book a call and receive a free website demo tailored to your business.
-                      </p>
-                  </div>
-                  </motion.div>
-
-                  {/*  */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.3 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="flex items-center gap-12"
-                  >
-                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
-                      <img src="/blobs/blob (2).svg" alt="" className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white font-bold text-3xl">3</span>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Set Up Payment</h3>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        If you like the website, set up the payment for 2 weeks' time.
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  {/* Step 4 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.4 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="flex items-center gap-12"
-                  >
-                    <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 relative">
-                      <img src="/blobs/blob (3).svg" alt="Step 4" className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white font-bold text-3xl">4</span>
-                  </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 font-thicccboi">Receive Your Website</h3>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        Receive your website within 48 hours of payment setup.
-                      </p>
-                    </div>
-                  </motion.div>
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-              <div className="mt-12">
-                  <Button 
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white px-8 py-4 text-lg rounded-full"
-                  >
-                    Get Started Today
-                  </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left - FAQ */}
+            <div className="text-left">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-thicccboi font-bold text-gray-900 mb-12 leading-tight">
+                Frequently asked<br />
+                <span className="ml-0">questions</span>
+              </h2>
+              
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="border-b border-gray-300/30">
+                    <button
+                      onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                      className="flex items-center justify-between w-full py-4 text-left hover:bg-gray-50/50 rounded-lg px-2 -mx-2 transition-colors duration-200"
+                    >
+                      <p className="text-gray-700 text-lg font-figtree font-medium pr-4">{faq.question}</p>
+                      <ChevronRight 
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                          openFAQ === index ? 'rotate-90' : 'rotate-0'
+                        }`} 
+                      />
+                    </button>
+                    {openFAQ === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-4 px-2">
+                          <p className="text-gray-600 font-figtree leading-relaxed">{faq.answer}</p>
                 </div>
               </motion.div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right - CTA Card */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md">
+                <div className="bg-gradient-to-b from-yellow-400 via-orange-500 to-purple-600 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+                  {/* Grainy texture overlay */}
+                  <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+')] bg-repeat"></div>
+                  
+                  {/* Profile Picture */}
+                  <div className="flex justify-center mb-6 relative z-10">
+                    <div className="w-16 h-16 bg-yellow-300 rounded-full flex items-center justify-center text-3xl">
+                      😊
+                    </div>
+                  </div>
+                  
+                  {/* Text */}
+                  <div className="text-center mb-8 relative z-10">
+                    <h3 className="text-white text-2xl font-thicccboi font-semibold mb-4 leading-tight">
+                      Ready to Get Started?<br />
+                      Book a free call
+                    </h3>
+                    
+                    {/* Button */}
+                    <button 
+                      onClick={openCalendly}
+                      className="w-full bg-black text-white py-4 px-6 rounded-xl font-figtree font-semibold text-lg hover:bg-gray-800 transition-colors duration-200 mb-6"
+                    >
+                      Book a call
+                    </button>
+                    
+                    {/* WhatsApp Section */}
+                    <div className="flex items-center justify-center gap-3 text-gray-200">
+                      <div className="w-5 h-5 flex items-center justify-center">
+                        <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-300 font-figtree">Prefer to WhatsApp?</p>
+                        <button 
+                          onClick={() => window.open('https://wa.me/447792145328', '_blank')}
+                          className="text-green-400 font-figtree font-medium hover:text-green-300 transition-colors"
+                        >
+                          Chat with us
+                        </button>
+                      </div>
+                      <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <HomeServices />
     </>
   );
 };

@@ -1,204 +1,138 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
-import { useBusiness } from "@/hooks/useBusiness";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { toast } from "@/hooks/use-toast";
+import { Calendar, Clock, CheckCircle } from "lucide-react";
+import { useEffect } from "react";
 
 const HomeContact = () => {
-  const { phone, facebookUrl, location } = useBusiness();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // Load Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Thank you!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
-  };
-
-  const handlePhoneClick = () => {
-    window.open(`tel:${phone}`, '_self');
-  };
-
-  const handleFacebookClick = () => {
-    window.open(facebookUrl, '_blank');
-  };
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto max-w-6xl px-4">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-cleaning-text mb-4 font-thicccboi">
-            Get Your Free Quote
-          </h2>
-          <p className="text-lg text-cleaning-text/80 mb-6 font-inter">
-            Ready for a cleaner, fresher home? Contact us today for a personalized quote.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+    <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left - Heading and Benefits */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.3 }}
+            className="space-y-8"
           >
-            <Card className="border-cleaning-border">
-              <CardHeader>
-                <CardTitle className="text-2xl font-inter text-cleaning-text">
-                  Request a Quote
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      name="firstName"
-                      placeholder="First Name"
-                      required
-                      className="border-cleaning-border"
-                    />
-                    <Input
-                      name="lastName"
-                      placeholder="Last Name"
-                      required
-                      className="border-cleaning-border"
-                    />
-                  </div>
-                  <Input
-                    name="phone"
-                    type="tel"
-                    placeholder="Phone Number"
-                    required
-                    className="border-cleaning-border"
-                  />
-                  <Input
-                    name="postcode"
-                    placeholder="Postcode"
-                    required
-                    className="border-cleaning-border"
-                  />
-                  <select
-                    name="service"
-                    required
-                    className="w-full px-3 py-2 border border-cleaning-border rounded-md focus:outline-none focus:ring-2 focus:ring-cleaning-primary"
-                  >
-                    <option value="">Select Service</option>
-                    <option value="recurring">Recurring Clean</option>
-                    <option value="deep">Deep Clean</option>
-                    <option value="bathroom">Bathroom Only</option>
-                    <option value="oven">Oven Clean</option>
-                    <option value="end-tenancy">End of Tenancy</option>
-                  </select>
-                  <Textarea
-                    name="message"
-                    placeholder="Tell us about your cleaning needs..."
-                    rows={3}
-                    className="border-cleaning-border"
-                  />
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-cleaning-primary hover:bg-cleaning-primary/90 text-white font-inter"
-                  >
-                    {isSubmitting ? "Sending..." : "Send Quote Request"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+            {/* Section Header */}
+            <div className="mb-8">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-thicccboi font-bold text-gray-900 mb-6 leading-tight">
+                Book your <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent">free</span> website demo.
+              </h2>
+              <p className="text-xl sm:text-2xl text-gray-700 font-figtree leading-relaxed">
+                Get a free preview of your website designed specifically for your business. See exactly what you'll get before you commit.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-figtree font-semibold text-gray-900 mb-2">Free Website Preview</h3>
+                  <p className="text-gray-700 font-figtree">See your actual website designed and built before you make any commitment.</p>
+                </div>
+              </div>
 
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3 className="text-xl font-semibold text-cleaning-text mb-4 font-inter">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <button
-                  onClick={handlePhoneClick}
-                  className="flex items-center space-x-3 w-full text-left hover:opacity-80 transition-opacity cursor-pointer"
-                >
-                  <div className="w-12 h-12 bg-cleaning-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-cleaning-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-cleaning-text">Call Us</p>
-                    <p className="text-cleaning-text/70">{phone}</p>
-                  </div>
-                </button>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-figtree font-semibold text-gray-900 mb-2">Fast Delivery</h3>
+                  <p className="text-gray-700 font-figtree">Get your website preview within 48 hours of our call.</p>
+                </div>
+              </div>
 
-                <button
-                  onClick={handleFacebookClick}
-                  className="flex items-center space-x-3 w-full text-left hover:opacity-80 transition-opacity cursor-pointer"
-                >
-                  <div className="w-12 h-12 bg-cleaning-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MessageCircle className="w-6 h-6 text-cleaning-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-cleaning-text">Message on Facebook</p>
-                    <p className="text-cleaning-text/70">Get a quick response</p>
-                  </div>
-                </button>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-figtree font-semibold text-gray-900 mb-2">No Risk</h3>
+                  <p className="text-gray-700 font-figtree">14-day money-back guarantee if you're not completely satisfied.</p>
+                </div>
+              </div>
+            </div>
 
+            {/* Contact Preferences */}
+            <div className="bg-gray-50 rounded-xl p-6 mt-6">
+              <h4 className="text-lg font-figtree font-semibold text-gray-900 mb-4">Prefer to text or call?</h4>
+              <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-cleaning-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-cleaning-primary" />
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-medium text-cleaning-text">Service Area</p>
-                    <p className="text-cleaning-text/70">{location} and surrounding areas</p>
+                    <p className="text-gray-700 font-figtree font-medium">WhatsApp</p>
+                    <a 
+                      href="https://wa.me/447792145328"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 font-figtree hover:text-green-700 transition-colors"
+                    >
+                      +44 7792 145328
+                    </a>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-cleaning-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-cleaning-primary" />
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-blue-600 text-sm">📞</span>
                   </div>
                   <div>
-                    <p className="font-medium text-cleaning-text">Response Time</p>
-                    <p className="text-cleaning-text/70">Within 24 hours</p>
+                    <p className="text-gray-700 font-figtree font-medium">Phone Call</p>
+                    <a 
+                      href="tel:+447792145328"
+                      className="text-blue-600 font-figtree hover:text-blue-700 transition-colors"
+                    >
+                      +44 7792 145328
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="pt-4">
-              <Link to="/contact">
-                <Button variant="outline" className="w-full border-cleaning-primary text-cleaning-primary hover:bg-cleaning-primary hover:text-white font-inter">
-                  View Full Contact Page
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
+          </motion.div>
+
+          {/* Right - Calendly Widget */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="bg-white rounded-2xl shadow-2xl p-8"
+          >
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-thicccboi font-bold text-gray-900 mb-2">
+                Schedule Your Call
+              </h3>
+              <p className="text-gray-600 font-figtree">
+                Choose a time that works for you
+              </p>
+                  </div>
+            
+            {/* Calendly Inline Widget */}
+            <div 
+              className="calendly-inline-widget" 
+              data-url="https://calendly.com/dorward-connor/website-demo?hide_event_type_details=1&hide_gdpr_banner=1" 
+              style={{ minWidth: '320px', height: '700px' }}
+            >
             </div>
           </motion.div>
         </div>

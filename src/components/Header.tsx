@@ -1,7 +1,7 @@
 
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackCTA } from "@/lib/analytics";
 import { Link } from "react-router-dom";
@@ -9,6 +9,28 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { name, phone, facebookUrl } = useBusiness();
+
+  // Load Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+    
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/your-username/your-event-type' // Replace with your actual Calendly URL
+      });
+    }
+  };
 
   const handlePhoneClick = () => {
     trackCTA('phone', 'header');
