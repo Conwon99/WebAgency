@@ -3,7 +3,7 @@ import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useBusiness } from "@/hooks/useBusiness";
-import { trackCTA } from "@/lib/analytics";
+import { trackBookCall } from "@/lib/analytics";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -25,6 +25,7 @@ const Header = () => {
   }, []);
 
   const openCalendly = () => {
+    trackBookCall('header');
     document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -59,42 +60,30 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-8">
             {/* Desktop Navigation */}
             <nav className="flex items-center space-x-8">
-              <Link 
-                to="/"
+              <button 
+                onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
-              </Link>
-              <Link 
-                to="/services"
+              </button>
+              <button 
+                onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
-                Services
-              </Link>
-              <Link 
-                to="/pricing"
+                Portfolio
+              </button>
+              <button 
+                onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
-                Pricing
-              </Link>
-              <Link 
-                to="/reviews"
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-              >
-                Reviews
-              </Link>
-              <Link 
-                to="/gallery"
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-              >
-                Gallery
-              </Link>
-              <Link 
-                to="/contact"
+                FAQ
+              </button>
+              <button 
+                onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
-              </Link>
+              </button>
             </nav>
 
             {/* Desktop CTA */}
@@ -124,53 +113,48 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-cleaning-border">
             <nav className="flex flex-col space-y-4 mt-4">
-              <Link 
-                to="/"
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
-              </Link>
-              <Link 
-                to="/services"
+              </button>
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Services
-              </Link>
-              <Link 
-                to="/pricing"
+                Portfolio
+              </button>
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
-              </Link>
-              <Link 
-                to="/reviews"
+                FAQ
+              </button>
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Reviews
-              </Link>
-              <Link 
-                to="/gallery"
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-              <Link 
-                to="/contact"
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
-              </Link>
+              </button>
             </nav>
             <div className="flex flex-col space-y-2 mt-4">
               <Button 
                 onClick={() => {
                   setIsMobileMenuOpen(false);
+                  trackBookCall('mobile_menu');
                   document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white rounded-full px-6 py-3 font-figtree font-medium"
