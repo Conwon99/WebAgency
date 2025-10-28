@@ -1,6 +1,5 @@
 
 import Header from "@/components/Header";
-import ContactBar from "@/components/ContactBar";
 import Hero from "@/components/Hero";
 import HomeServices from "@/components/HomeServices";
 import HomeContact from "@/components/HomeContact";
@@ -10,7 +9,6 @@ const Index = () => {
   return (
     <div className="font-inter">
       <Header />
-      <ContactBar />
       <Hero />
       <HomeContact />
       <Footer />

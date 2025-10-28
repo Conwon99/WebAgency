@@ -1,13 +1,11 @@
-import { Phone, Facebook, ExternalLink } from "lucide-react";
-import { useBusiness } from "@/hooks/useBusiness";
+import { Phone, Facebook, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { name, phone, facebookUrl, location } = useBusiness();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-cleaning-text text-white py-12">
+    <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -15,53 +13,53 @@ const Footer = () => {
             <div className="mb-4">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/Sparkleslogo.png" 
-                  alt={`${name} Logo`}
+                  src="/C logo.png" 
+                  alt="CodaPixel Logo"
                   className="h-10 w-auto"
                 />
-                <h3 className="text-xl font-bold font-inter">{name}</h3>
+                <h3 className="text-xl font-bold font-thicccboi">CodaPixel</h3>
               </div>
             </div>
-            <p className="text-gray-300 font-inter mb-4">
-              Professional cleaning services tailored to your needs. Serving {location} and surrounding areas.
+            <p className="text-gray-300 font-figtree mb-4">
+              Professional website design and development services. We build beautiful, fast websites that generate clients for your business.
             </p>
             <div className="flex items-center space-x-4">
               <a
-                href={`tel:${phone}`}
+                href="tel:+447792145328"
                 className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>{phone}</span>
+                <span>+44 7792 145328</span>
               </a>
               <a
-                href={facebookUrl}
+                href="https://wa.me/447792145328"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
               >
-                <Facebook className="w-4 h-4" />
-                <span>Facebook</span>
+                <img src="/whatsapp.svg" alt="WhatsApp" className="w-4 h-4" style={{ filter: 'brightness(0) invert(1)' }} />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
           
           {/* Services */}
           <div>
-            <h4 className="text-lg font-inter font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-300 font-inter">
-              <li>AIR B&B's</li>
-              <li>End of Tenancy</li>
-              <li>Deep Cleans</li>
-              <li>One Off Cleans</li>
-              <li>Rubbish Removal</li>
-              <li>Carpet & Sofa Cleaning</li>
+            <h4 className="text-lg font-thicccboi font-semibold mb-4">Services</h4>
+            <ul className="space-y-2 text-gray-300 font-figtree">
+              <li>Website Design</li>
+              <li>Website Development</li>
+              <li>SEO Optimization</li>
+              <li>Analytics Setup</li>
+              <li>Ongoing Support</li>
+              <li>Monthly Maintenance</li>
             </ul>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-inter font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-300 font-inter">
+            <h4 className="text-lg font-thicccboi font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-gray-300 font-figtree">
               <li>
                 <Link to="/" className="hover:text-white transition-colors">
                   Home
@@ -84,7 +82,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/gallery" className="hover:text-white transition-colors">
-                  Gallery
+                  Portfolio
                 </Link>
               </li>
               <li>
@@ -98,21 +96,21 @@ const Footer = () => {
         
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-300 font-inter text-sm">
-              <p>© {currentYear} {name}. All rights reserved.</p>
-              <p className="mt-1">{location}</p>
+            <div className="text-gray-300 font-figtree text-sm">
+              <p>© {currentYear} CodaPixel. All rights reserved.</p>
+              <p className="mt-1">Professional Website Design & Development</p>
             </div>
             <div className="flex items-center space-x-6 text-sm">
               <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
               <a
-                href={facebookUrl}
+                href="https://wa.me/447792145328"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors flex items-center space-x-1"
               >
-                <span>Facebook</span>
+                <span>WhatsApp</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>

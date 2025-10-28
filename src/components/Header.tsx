@@ -25,11 +25,7 @@ const Header = () => {
   }, []);
 
   const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/your-username/your-event-type' // Replace with your actual Calendly URL
-      });
-    }
+    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handlePhoneClick = () => {
@@ -54,7 +50,7 @@ const Header = () => {
           <Link to="/" className="flex items-center">
             <img 
               src="/C logo.png" 
-              alt={`${name} Logo`}
+              alt="CodaPixel Logo"
               className="h-12 w-auto"
             />
           </Link>
@@ -65,37 +61,37 @@ const Header = () => {
             <nav className="flex items-center space-x-8">
               <Link 
                 to="/"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
               </Link>
               <Link 
                 to="/services"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Services
               </Link>
               <Link 
                 to="/pricing"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Pricing
               </Link>
               <Link 
                 to="/reviews"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Reviews
               </Link>
               <Link 
                 to="/gallery"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Gallery
               </Link>
               <Link 
                 to="/contact"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
               </Link>
@@ -103,7 +99,7 @@ const Header = () => {
 
             {/* Desktop CTA */}
             <Button 
-              onClick={handlePhoneClick}
+              onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white rounded-full px-6 py-2 font-medium"
             >
               Book Free Call
@@ -113,7 +109,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2"
+            className="md:hidden p-2 z-50 relative"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
@@ -130,42 +126,42 @@ const Header = () => {
             <nav className="flex flex-col space-y-4 mt-4">
               <Link 
                 to="/"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/services"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link 
                 to="/pricing"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Pricing
               </Link>
               <Link 
                 to="/reviews"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Reviews
               </Link>
               <Link 
                 to="/gallery"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Gallery
               </Link>
               <Link 
                 to="/contact"
-                className="text-gray-800 hover:text-cleaning-primary font-inter font-medium transition-colors"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
@@ -173,18 +169,13 @@ const Header = () => {
             </nav>
             <div className="flex flex-col space-y-2 mt-4">
               <Button 
-                variant="outline"
-                onClick={handlePhoneClick}
-                className="flex items-center justify-center space-x-2 border-cleaning-primary text-cleaning-primary hover:bg-cleaning-primary hover:text-white rounded-full"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white rounded-full px-6 py-3 font-figtree font-medium"
               >
-                <Phone className="w-4 h-4 text-cleaning-primary" />
-                <span>Call {phone}</span>
-              </Button>
-              <Button 
-                onClick={handleFacebookClick}
-                className="bg-cleaning-primary hover:bg-cleaning-primary/90 text-white rounded-full"
-              >
-                Message on Facebook
+                Book a free call
               </Button>
             </div>
           </div>

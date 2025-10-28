@@ -35,21 +35,8 @@ const HomeContact = () => {
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-thicccboi font-bold text-gray-900 mb-6 leading-tight">
                 Book your <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent">free</span> website demo.
               </h2>
-              <p className="text-xl sm:text-2xl text-gray-700 font-figtree leading-relaxed">
-                Get a free preview of your website designed specifically for your business. See exactly what you'll get before you commit.
-              </p>
             </div>
             <div className="space-y-4">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-figtree font-semibold text-gray-900 mb-2">Free Website Preview</h3>
-                  <p className="text-gray-700 font-figtree">See your actual website designed and built before you make any commitment.</p>
-                </div>
-              </div>
-
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                   <Clock className="w-6 h-6 text-blue-600" />
@@ -72,39 +59,27 @@ const HomeContact = () => {
             </div>
 
             {/* Contact Preferences */}
-            <div className="bg-gray-50 rounded-xl p-6 mt-6">
+            <div className="mt-6">
               <h4 className="text-lg font-figtree font-semibold text-gray-900 mb-4">Prefer to text or call?</h4>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-figtree font-medium">WhatsApp</p>
-                    <a 
-                      href="https://wa.me/447792145328"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-green-600 font-figtree hover:text-green-700 transition-colors"
-                    >
-                      +44 7792 145328
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 text-sm">📞</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-figtree font-medium">Phone Call</p>
-                    <a 
-                      href="tel:+447792145328"
-                      className="text-blue-600 font-figtree hover:text-blue-700 transition-colors"
-                    >
-                      +44 7792 145328
-                    </a>
-                  </div>
-                </div>
+              <div className="flex flex-col gap-4">
+                <a 
+                  href="https://wa.me/447792145328"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors"
+                >
+                  <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
+                  WhatsApp Us
+                </a>
+                <a 
+                  href="tel:+447792145328"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Call Us +44 7792 145328
+                </a>
               </div>
             </div>
 
@@ -116,7 +91,7 @@ const HomeContact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="bg-white rounded-2xl shadow-2xl p-8"
+            className="p-8"
           >
             <div className="text-center mb-6">
               <h3 className="text-2xl font-thicccboi font-bold text-gray-900 mb-2">
