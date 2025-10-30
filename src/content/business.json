@@ -3,28 +3,28 @@
   "location": "Ayr, United Kingdom",
   "phone": "+44 7483 879647",
   "phoneVerified": false,
-  "email": "2204sparkles@gmail.com",
-  "tagline": "Professional cleaning services tailored to your needs.",
+  "email": "dorward.connor@gmail.com",
+  "tagline": "Web design and local SEO that generate clients.",
   "services": [
-    "AIR B&B's",
-    "End of tenancy",
-    "Deep cleans",
-    "One off cleans",
-    "Cleans tailored to you",
-    "Rubbish Removal & sanitisation",
-    "Carpet & sofa cleans to freshen up your upholstery's",
-    "Free quotation cleaning service"
+    "Web design",
+    "Website redesigns",
+    "Local SEO (Google Business Profile)",
+    "On-page SEO",
+    "Landing pages & CRO",
+    "Analytics & conversion tracking",
+    "Speed optimization",
+    "Ongoing support & updates"
   ],
   "pricing": [
     {
-      "label": "One-off deep clean",
-      "from": 80,
+      "label": "Starter Website",
+      "from": 79,
       "currency": "GBP",
       "note": "Starting from"
     },
     {
-      "label": "End of tenancy clean",
-      "from": 120,
+      "label": "Business Website",
+      "from": 149,
       "currency": "GBP",
       "note": "Starting from"
     }

@@ -2,24 +2,40 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 import { useEffect } from "react";
+import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent } from "@/lib/analytics";
 
 const HomeContact = () => {
-  // Load Calendly script
+  // Load Calendly script and set up event tracking
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     document.head.appendChild(script);
     
+    // Set up Calendly event listeners
+    const handleCalendlyEvent = (e: any) => {
+      const eventType = e.data.event;
+      if (eventType === 'calendly.event_scheduled') {
+        trackCalendlyEvent('scheduled', 'Contact Section');
+      } else if (eventType === 'calendly.popup_open') {
+        trackCalendlyEvent('opened', 'Contact Section');
+      } else if (eventType === 'calendly.popup_close') {
+        trackCalendlyEvent('closed', 'Contact Section');
+      }
+    };
+    
+    window.addEventListener('message', handleCalendlyEvent);
+    
     return () => {
       if (document.head.contains(script)) {
         document.head.removeChild(script);
       }
+      window.removeEventListener('message', handleCalendlyEvent);
     };
   }, []);
 
   return (
-    <section id="contact-section" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+    <section id="contact-section" data-section="Contact" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left - Heading and Benefits */}
@@ -56,29 +72,31 @@ const HomeContact = () => {
                   <p className="text-gray-700 font-figtree">14-day money-back guarantee if you're not completely satisfied.</p>
                 </div>
               </div>
-            </div>
+                  </div>
 
             {/* Contact Preferences */}
             <div className="mt-6">
               <h4 className="text-lg font-figtree font-semibold text-gray-900 mb-4">Prefer to text or call?</h4>
               <div className="flex flex-col gap-4">
                 <a 
-                  href="https://wa.me/447792145328"
+                  href="https://wa.me/447483879647"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsApp('contact_section')}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors"
                 >
                   <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
                   WhatsApp Us
                 </a>
                 <a 
-                  href="tel:+447792145328"
+                  href="tel:+447483879647"
+                  onClick={() => trackPhoneCall('contact_section')}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-black text-black rounded-full font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  Call Us +44 7792 145328
+                  Call Us +44 7483 879647
                 </a>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import ContactBar from "@/components/ContactBar";
 import Footer from "@/components/Footer";
@@ -37,8 +38,8 @@ const Contact = () => {
     const data = {
       name: formData.get('name') as string,
       postcode: formData.get('postcode') as string,
-      preferredDays: formData.get('preferredDays') as string,
-      serviceType: formData.get('serviceType') as string,
+      businessType: formData.get('businessType') as string,
+      serviceNeeded: formData.get('serviceNeeded') as string,
       message: formData.get('message') as string,
     };
 
@@ -69,6 +70,11 @@ const Contact = () => {
 
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
+      <Helmet>
+        <title>Contact CodaPixel</title>
+        <meta name="description" content="Book a discovery call. Fast replies." />
+        <link rel="canonical" href="https://codapixel.co.uk/contact" />
+      </Helmet>
       <Header />
       <ContactBar />
       
@@ -85,7 +91,7 @@ const Contact = () => {
               Get in Touch
             </h1>
             <p className="text-xl text-cleaning-text/80 mb-8">
-              Tell us a little about your home and the times that suit you — we'll get back to you with availability and a quote.
+              Get in touch to discuss your web design and local SEO needs. We'll respond within 24 hours.
             </p>
           </motion.div>
         </div>
@@ -136,36 +142,36 @@ const Contact = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="preferredDays" className="text-cleaning-text">Preferred Days</Label>
-                        <Select name="preferredDays">
+                        <Label htmlFor="businessType" className="text-cleaning-text">Business Type *</Label>
+                        <Select name="businessType" required>
                           <SelectTrigger className="border-cleaning-border focus:border-cleaning-primary">
-                            <SelectValue placeholder="Select preferred days" />
+                            <SelectValue placeholder="Select business type" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="monday">Monday</SelectItem>
-                            <SelectItem value="tuesday">Tuesday</SelectItem>
-                            <SelectItem value="wednesday">Wednesday</SelectItem>
-                            <SelectItem value="thursday">Thursday</SelectItem>
-                            <SelectItem value="friday">Friday</SelectItem>
-                            <SelectItem value="saturday">Saturday</SelectItem>
-                            <SelectItem value="flexible">Flexible</SelectItem>
+                            <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
+                            <SelectItem value="retail">Retail / Shop</SelectItem>
+                            <SelectItem value="professional">Professional Services</SelectItem>
+                            <SelectItem value="healthcare">Healthcare</SelectItem>
+                            <SelectItem value="construction">Construction / Trades</SelectItem>
+                            <SelectItem value="beauty">Beauty / Wellness</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="serviceType" className="text-cleaning-text">Service Type *</Label>
-                        <Select name="serviceType" required>
+                        <Label htmlFor="serviceNeeded" className="text-cleaning-text">Service Needed *</Label>
+                        <Select name="serviceNeeded" required>
                           <SelectTrigger className="border-cleaning-border focus:border-cleaning-primary">
-                            <SelectValue placeholder="Select service type" />
+                            <SelectValue placeholder="Select service" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="weekly">Weekly Clean</SelectItem>
-                            <SelectItem value="fortnightly">Fortnightly Clean</SelectItem>
-                            <SelectItem value="monthly">Monthly Clean</SelectItem>
-                            <SelectItem value="one-off">One-off Deep Clean</SelectItem>
-                            <SelectItem value="bathroom-only">Bathroom-Only Clean</SelectItem>
-                            <SelectItem value="oven-clean">Oven/Microwave Clean</SelectItem>
-                            <SelectItem value="end-tenancy">End-of-Tenancy Clean</SelectItem>
+                            <SelectItem value="new-website">New Website</SelectItem>
+                            <SelectItem value="redesign">Website Redesign</SelectItem>
+                            <SelectItem value="seo">Local SEO</SelectItem>
+                            <SelectItem value="gbp">Google Business Profile</SelectItem>
+                            <SelectItem value="tracking">Analytics Setup</SelectItem>
+                            <SelectItem value="speed">Speed Optimization</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -178,7 +184,7 @@ const Contact = () => {
                         name="message"
                         rows={4}
                         className="border-cleaning-border focus:border-cleaning-primary"
-                        placeholder="Tell us about your home, specific requirements, or any questions you have..."
+                        placeholder="Tell us about your business, goals, timeline, or any specific requirements..."
                       />
                     </div>
                     
@@ -272,19 +278,19 @@ const Contact = () => {
                   <ul className="space-y-3">
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-cleaning-primary rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-cleaning-text/80">Fully focused on domestic homes</span>
+                      <span className="text-sm text-cleaning-text/80">Fast 48-hour delivery</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-cleaning-primary rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-cleaning-text/80">Flexible scheduling to suit your routine</span>
+                      <span className="text-sm text-cleaning-text/80">14-day money-back guarantee</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-cleaning-primary rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-cleaning-text/80">Eco-friendly cleaning products</span>
+                      <span className="text-sm text-cleaning-text/80">No contracts, cancel anytime</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <div className="w-2 h-2 bg-cleaning-primary rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-cleaning-text/80">Trusted and reliable service</span>
+                      <span className="text-sm text-cleaning-text/80">Results-focused approach</span>
                     </li>
                   </ul>
                 </CardContent>

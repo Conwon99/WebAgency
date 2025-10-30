@@ -1,5 +1,6 @@
 import { Phone, Facebook, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackWhatsApp, trackPhoneCall } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="mb-4">
@@ -24,17 +25,19 @@ const Footer = () => {
               Professional website design and development services. We build beautiful, fast websites that generate clients for your business.
             </p>
             <div className="flex items-center space-x-4">
-              <a
-                href="tel:+447792145328"
+              <a 
+                href="tel:+447483879647"
+                onClick={() => trackPhoneCall('footer')}
                 className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>+44 7792 145328</span>
+                <span>+44 7483 879647</span>
               </a>
-              <a
-                href="https://wa.me/447792145328"
+              <a 
+                href="https://wa.me/447483879647"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsApp('footer')}
                 className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
               >
                 <img src="/whatsapp.svg" alt="WhatsApp" className="w-4 h-4" style={{ filter: 'brightness(0) invert(1)' }} />
@@ -47,12 +50,12 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-thicccboi font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-300 font-figtree">
-              <li>Website Design</li>
-              <li>Website Development</li>
-              <li>SEO Optimization</li>
-              <li>Analytics Setup</li>
-              <li>Ongoing Support</li>
-              <li>Monthly Maintenance</li>
+              <li>Web Design</li>
+              <li>Local SEO</li>
+              <li>Google Business Profile</li>
+              <li>Conversion Tracking</li>
+              <li>Speed Optimization</li>
+              <li>Landing Pages & CRO</li>
             </ul>
           </div>
           
@@ -92,6 +95,28 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
+          {/* Locations */}
+          <div>
+            <h4 className="text-lg font-thicccboi font-semibold mb-4">Locations</h4>
+            <ul className="space-y-2 text-gray-300 font-figtree">
+              <li>
+                <Link to="/locations/ayrshire" className="hover:text-white transition-colors">
+                  Scotland
+                </Link>
+              </li>
+              <li>England</li>
+              <li>Ireland</li>
+              <li>Wales</li>
+              <li>USA</li>
+              <li>Canada</li>
+              <li>
+                <Link to="/locations" className="hover:text-white transition-colors font-semibold">
+                  All Locations →
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8">
@@ -104,10 +129,11 @@ const Footer = () => {
               <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <a
-                href="https://wa.me/447792145328"
+              <a 
+                href="https://wa.me/447483879647"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsApp('footer_bottom')}
                 className="text-gray-300 hover:text-white transition-colors flex items-center space-x-1"
               >
                 <span>WhatsApp</span>

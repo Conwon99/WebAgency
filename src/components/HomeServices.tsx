@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, Bath, Microwave, Home, ArrowRight, Trash2, Sofa, Wrench } from "lucide-react";
+import { Code2, Search, BarChart3, Rocket, Gauge, ArrowRight, Settings } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
 
@@ -10,63 +10,63 @@ const HomeServices = () => {
 
   const services = [
     {
-      title: "AIR B&B's",
-      description: "Professional cleaning services for Airbnb properties to ensure guest satisfaction.",
-      icon: Home,
+      title: "Web Design",
+      description: "Modern, fast websites built to convert visitors into leads.",
+      icon: Code2,
       features: [
-        "Turnaround cleaning between guests",
-        "High standards for guest reviews",
-        "Flexible scheduling for bookings"
+        "Custom design and copy",
+        "Mobile-first, SEO-friendly",
+        "Lead capture and CTAs"
       ]
     },
     {
-      title: "End of Tenancy",
-      description: "Thorough cleaning to ensure you get your full deposit back.",
-      icon: Sparkles,
+      title: "Local SEO",
+      description: "Rank higher in local search and Google Maps to win nearby customers.",
+      icon: Search,
       features: [
-        "Full property deep clean",
-        "Professional cleaning standards",
-        "Deposit return guarantee"
+        "Google Business Profile optimization",
+        "On-page SEO & internal linking",
+        "Citation and review strategy"
       ]
     },
     {
-      title: "Deep Cleans",
-      description: "Intensive cleaning services for homes that need extra attention.",
-      icon: Bath,
+      title: "Conversion Tracking",
+      description: "Measure what matters with clean analytics and event tracking.",
+      icon: BarChart3,
       features: [
-        "Comprehensive room-by-room cleaning",
-        "Hard-to-reach areas and detailed attention",
-        "Perfect for spring cleaning or moving"
+        "GA4 & Google Tag Manager setup",
+        "Form, call & WhatsApp tracking",
+        "Monthly performance reports"
       ]
     },
     {
-      title: "One Off Cleans",
-      description: "Flexible one-time cleaning services for special occasions.",
-      icon: Calendar,
+      title: "Speed Optimization",
+      description: "Improve Core Web Vitals for better rankings and user experience.",
+      icon: Gauge,
       features: [
-        "Special event preparation",
-        "Post-renovation cleaning",
-        "Emergency cleaning services"
+        "Image & asset optimization",
+        "Code splitting & caching",
+        "CLS/LCP/INP improvements"
       ]
     },
     {
-      title: "Rubbish Removal",
-      description: "Complete rubbish removal and sanitisation services.",
-      icon: Trash2,
+      title: "Landing Pages & CRO",
+      description: "High-converting pages tested and refined to maximize leads.",
+      icon: Rocket,
       features: [
-        "House clearance services",
-        "Waste disposal and recycling",
-        "Sanitisation after removal"
+        "Offer-focused page design",
+        "A/B testing & heatmaps",
+        "Clear messaging hierarchy"
       ]
     },
     {
-      title: "Carpet & Sofa Cleaning",
-      description: "Professional upholstery cleaning to freshen up your furniture.",
-      icon: Sofa,
+      title: "Maintenance & Support",
+      description: "Reliable updates, backups, and small changes handled for you.",
+      icon: Settings,
       features: [
-        "Deep carpet cleaning",
-        "Sofa and chair cleaning",
-        "Stain removal and deodorizing"
+        "Unlimited small edits",
+        "Security & uptime monitoring",
+        "Priority support"
       ]
     }
   ];
@@ -89,7 +89,7 @@ const HomeServices = () => {
             <div className="flex-1 h-px bg-gradient-to-r from-[#3b82f6] to-transparent ml-6"></div>
           </div>
           <p className="text-lg text-cleaning-text/80 mb-6">
-            We provide comprehensive cleaning services tailored to your needs with flexible scheduling and attention to detail.
+            We build high-performing websites and local SEO systems that drive inbound leads and make results measurable.
           </p>
         </motion.div>
 
@@ -156,12 +156,12 @@ const HomeServices = () => {
           className="mt-20 bg-white rounded-2xl shadow-lg p-8 lg:p-12"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - House Illustration */}
+            {/* Left Side - Illustration */}
             <div className="flex justify-center">
               <div className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem]">
                 <img
-                  src="/houseedit.png"
-                  alt="House illustration showing different rooms and areas"
+                  src="/phone.png"
+                  alt="Website & analytics illustration"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -170,11 +170,11 @@ const HomeServices = () => {
             {/* Right Side - Content */}
             <div className="text-center lg:text-left">
               <h3 className="text-2xl lg:text-3xl font-bold text-cleaning-text mb-6 font-thicccboi">
-                We cover all areas of your home
+                What you get with every project
               </h3>
               
               <p className="text-cleaning-text/70 mb-8 leading-relaxed">
-                From the smallest corners to the most challenging spaces, our professional cleaning service ensures every area of your property receives the attention it deserves.
+                Clear communication, measurable outcomes, and a website engineered for speed, SEO, and conversions.
               </p>
               
                              {/* Service Areas Checklist */}
@@ -186,7 +186,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Bathrooms</span>
+                    <span className="text-cleaning-text font-medium">Mobile-first design</span>
                    </div>
                    <div className="flex items-center space-x-3">
                      <div className="w-5 h-5 bg-cleaning-primary rounded-full flex items-center justify-center">
@@ -194,7 +194,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Kitchens</span>
+                    <span className="text-cleaning-text font-medium">On-page SEO</span>
                    </div>
                    <div className="flex items-center space-x-3">
                      <div className="w-5 h-5 bg-cleaning-primary rounded-full flex items-center justify-center">
@@ -202,7 +202,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Living Rooms</span>
+                    <span className="text-cleaning-text font-medium">Lead capture & forms</span>
                    </div>
                    <div className="flex items-center space-x-3">
                      <div className="w-5 h-5 bg-cleaning-primary rounded-full flex items-center justify-center">
@@ -210,7 +210,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Carpets</span>
+                    <span className="text-cleaning-text font-medium">Speed & Core Web Vitals</span>
                    </div>
                  </div>
                  
@@ -221,7 +221,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Bedrooms</span>
+                    <span className="text-cleaning-text font-medium">Google Business Profile</span>
                    </div>
                    <div className="flex items-center space-x-3">
                      <div className="w-5 h-5 bg-cleaning-primary rounded-full flex items-center justify-center">
@@ -229,7 +229,7 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Businesses</span>
+                    <span className="text-cleaning-text font-medium">Conversion tracking</span>
                    </div>
                    <div className="flex items-center space-x-3">
                      <div className="w-5 h-5 bg-cleaning-primary rounded-full flex items-center justify-center">
@@ -237,14 +237,14 @@ const HomeServices = () => {
                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                        </svg>
                      </div>
-                     <span className="text-cleaning-text font-medium">Windows</span>
+                    <span className="text-cleaning-text font-medium">Ongoing support</span>
                    </div>
                  </div>
                </div>
               
               {/* CTA Button */}
               <Button className="bg-cleaning-primary hover:bg-cleaning-primary/90 text-white px-8 py-3 text-lg rounded-full">
-                Get a free quote
+                Get a free proposal
               </Button>
             </div>
           </div>

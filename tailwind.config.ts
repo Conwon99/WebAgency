@@ -69,7 +69,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom cleaning service colors
+				// CodaPixel brand colors
 				cleaning: {
 					primary: '#3b82f6',
 					accent: '#1d4ed8',

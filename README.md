@@ -1,6 +1,6 @@
-# Ayrshire Domestic Cleaning Services
+# CodaPixel - Web Design & Local SEO Agency
 
-A modern, responsive website for Ayrshire Domestic Cleaning Services - a local domestic cleaning business serving Ayr and surrounding areas.
+A modern, responsive website for CodaPixel - a professional web design and local SEO agency serving Ayrshire and surrounding areas in Scotland.
 
 ## Features
 
@@ -95,12 +95,12 @@ Update business details in `src/content/business.json`:
 
 ```json
 {
-  "name": "Ayrshire Domestic Cleaning Services",
-  "location": "Ayr, Scotland",
-  "phone": "07354 194260",
+  "name": "CodaPixel",
+  "location": "Ayr, United Kingdom",
+  "phone": "+44 7483 879647",
   "phoneVerified": false,
-  "facebookUrl": "https://www.facebook.com/p/Ayrshire-Domestic-Cleaning-Services-61552485193024/",
-  "tagline": "Maintaining a clean and welcoming environment.",
+  "email": "dorward.connor@gmail.com",
+  "tagline": "Web design and local SEO that generate clients.",
   "services": [...],
   "pricing": [...]
 }
@@ -195,8 +195,64 @@ The site is configured for deployment on Netlify with:
 
 ## License
 
-This project is private and proprietary to Ayrshire Domestic Cleaning Services.
+This project is private and proprietary to CodaPixel.
 
 ## Support
 
 For support or questions, contact the development team or the business owner.
+
+---
+
+## Keyword Discovery (Agency)
+
+### 50 Local-Intent Keywords for CodaPixel
+
+| Intent Type | Keyword | Priority | Target Page |
+|------------|---------|----------|-------------|
+| **Emergency** | website broken ayr | High | Home/Contact |
+| **Emergency** | urgent website fix ayr | High | Home/Contact |
+| **Emergency** | website down ayr | High | Home/Contact |
+| **Emergency** | hack recovery ayr | High | Home/Contact |
+| **Emergency** | restore website ayr | Medium | Home/Contact |
+| **Service** | web design ayr | Highest | Homepage |
+| **Service** | local SEO ayr | Highest | Homepage |
+| **Service** | website design ayr | Highest | Homepage |
+| **Service** | SEO services ayr | High | Services |
+| **Service** | Google Business Profile optimization ayr | High | Services |
+| **Service** | landing page design ayr | High | Services |
+| **Service** | conversion optimization ayr | High | Services |
+| **Service** | website speed optimization ayr | Medium | Services |
+| **Service** | web design prestwick | High | Homepage |
+| **Service** | web design troon | High | Homepage |
+| **Service** | local SEO glasgow | Medium | Homepage |
+| **Service** | web design kilmarnock | Medium | Homepage |
+| **Service** | web design irvine | Medium | Homepage |
+| **Problem** | website not showing on google ayr | High | Blog/Services |
+| **Problem** | site slow ayr | High | Blog/Services |
+| **Problem** | low website traffic ayr | High | Blog/Services |
+| **Problem** | no leads from website ayr | High | Blog/Services |
+| **Problem** | GBP suspended ayr | High | Blog/Services |
+| **Problem** | website not mobile friendly ayr | Medium | Blog/Services |
+| **Problem** | poor google rankings ayr | Medium | Blog/Services |
+| **Local** | best web design agency ayr | High | Homepage |
+| **Local** | web designer near me ayr | High | Homepage |
+| **Local** | local SEO specialist ayr | High | Homepage |
+| **Local** | affordable web design ayr | Medium | Homepage |
+| **Local** | small business website ayr | Medium | Homepage |
+| **Local** | web design ayrshire | Medium | Homepage |
+| **Commercial Research** | web design cost ayr | High | Pricing |
+| **Commercial Research** | SEO pricing ayr | High | Pricing |
+| **Commercial Research** | website maintenance cost ayr | Medium | Pricing |
+| **Commercial Research** | monthly website hosting ayr | Medium | Pricing |
+| **Commercial Research** | website redesign cost ayr | Medium | Pricing |
+
+### Keyword Map
+
+| Page | Primary Keywords | Secondary Keywords | Content Focus |
+|------|-----------------|-------------------|---------------|
+| **Homepage** | web design ayr, local SEO ayr | best web design agency ayr, web designer near me ayr, web design prestwick, web design troon | Core value proposition, service overview, trust signals |
+| **Services** | SEO services ayr, Google Business Profile optimization | landing page design ayr, conversion optimization ayr, website speed optimization ayr | Individual service details, expertise, case studies |
+| **Pricing** | web design cost ayr, SEO pricing ayr | website maintenance cost ayr, monthly website hosting ayr | Transparent pricing, ROI, value demonstration |
+| **Contact** | urgent website fix ayr, website broken ayr | hack recovery ayr, restore website ayr | Quick response, availability, consultation booking |
+| **Gallery/Portfolio** | web design projects ayr, website examples ayr | affordable web design ayr, small business website ayr | Visual proof, diverse industries, conversion results |
+| **Blog** | website not showing on google ayr, GBP suspended ayr | site slow ayr, no leads from website ayr, poor rankings ayr | Educational content, problem-solving, authority building |

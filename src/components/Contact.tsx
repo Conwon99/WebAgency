@@ -30,7 +30,7 @@ Message: ${message}
     `;
     
     // Open default email client with pre-filled content
-    const mailtoLink = `mailto:2204sparkles@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:dorward.connor@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
     window.open(mailtoLink);
     
     console.log('Form submitted - email opened');

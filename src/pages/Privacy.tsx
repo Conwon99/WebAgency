@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import ContactBar from "@/components/ContactBar";
 import Footer from "@/components/Footer";
@@ -6,6 +7,11 @@ import { motion } from "framer-motion";
 const Privacy = () => {
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
+      <Helmet>
+        <title>Privacy Policy | CodaPixel</title>
+        <meta name="description" content="CodaPixel privacy policy and data protection information." />
+        <link rel="canonical" href="https://codapixel.co.uk/privacy" />
+      </Helmet>
       <Header />
       <ContactBar />
       
@@ -119,7 +125,7 @@ const Privacy = () => {
                   </p>
                   <ul className="list-none pl-0 space-y-1 mt-3">
                     <li>Phone: 07354 194260</li>
-                    <li>Email: <a href="mailto:2204sparkles@gmail.com" className="text-cleaning-primary hover:underline">2204sparkles@gmail.com</a></li>
+                    <li>Email: <a href="mailto:dorward.connor@gmail.com" className="text-cleaning-primary hover:underline">dorward.connor@gmail.com</a></li>
                   </ul>
                 </div>
 

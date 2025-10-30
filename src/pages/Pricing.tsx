@@ -1,10 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import ContactBar from "@/components/ContactBar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Calendar, Bath, Home, CheckCircle, Info } from "lucide-react";
+import { Code2, Search, Rocket, CheckCircle, Info } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
 
@@ -13,53 +14,54 @@ const Pricing = () => {
 
   const pricingPlans = [
     {
-      title: "Fortnightly General Clean",
+      title: "Starter Website",
       price: pricing[0].from,
       currency: pricing[0].currency,
       note: pricing[0].note,
-      icon: Calendar,
-      description: "Regular cleaning to keep your home fresh and welcoming",
+      icon: Code2,
+      description: "Perfect for small businesses getting started online",
       features: [
-        "All rooms cleaned and tidied",
-        "Bathroom sanitization",
-        "Kitchen deep clean",
-        "Vacuum and mop floors",
-        "Dust all surfaces",
-        "Empty bins and replace liners"
+        "Modern, responsive website design",
+        "Up to 5 pages",
+        "Basic SEO setup",
+        "Contact form integration",
+        "Mobile-optimized",
+        "Initial content creation"
       ],
       popular: true
     },
     {
-      title: "Monthly Bathroom-Only Clean",
+      title: "Business Website",
       price: pricing[1].from,
       currency: pricing[1].currency,
       note: pricing[1].note,
-      icon: Bath,
-      description: "Focused cleaning for bathrooms and wet rooms",
+      icon: Search,
+      description: "Complete web presence with local SEO",
       features: [
-        "Deep cleaning of all bathroom surfaces",
-        "Sanitization of high-touch areas",
-        "Grout and tile cleaning",
-        "Shower and bath deep clean",
-        "Mirror and fixture polishing",
-        "Toilet sanitization"
+        "Custom website design",
+        "Up to 10 pages",
+        "Local SEO optimization",
+        "Google Business Profile setup",
+        "Analytics & tracking",
+        "Lead capture forms",
+        "Ongoing support"
       ],
       popular: false
     },
     {
-      title: "One-Off Deep Clean",
-      price: "From £120",
+      title: "Growth Package",
+      price: "From £249",
       currency: "GBP",
-      note: "Indicative",
-      icon: Home,
-      description: "Comprehensive cleaning for special occasions",
+      note: "Monthly",
+      icon: Rocket,
+      description: "Advanced features for scaling businesses",
       features: [
-        "Full property deep clean",
-        "Hard-to-reach areas",
-        "Inside windows and frames",
-        "Oven and appliance cleaning",
-        "Carpet and upholstery",
-        "Detailed attention to all areas"
+        "Everything in Business Website",
+        "Landing page creation",
+        "Conversion optimization",
+        "Advanced SEO strategy",
+        "Monthly performance reports",
+        "Priority support"
       ],
       popular: false
     }
@@ -67,6 +69,11 @@ const Pricing = () => {
 
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
+      <Helmet>
+        <title>Pricing | CodaPixel</title>
+        <meta name="description" content="Simple plans with site, SEO, and support included." />
+        <link rel="canonical" href="https://codapixel.co.uk/pricing" />
+      </Helmet>
       <Header />
       <ContactBar />
       
@@ -79,11 +86,11 @@ const Pricing = () => {
             transition={{ duration: 0.7 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-cleaning-text mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-cleaning-text mb-6 font-thicccboi">
               Transparent Pricing
             </h1>
             <p className="text-xl text-cleaning-text/80 mb-8">
-              Copy explains house size and condition affect quotes. We provide personalized quotes based on your specific needs and home requirements.
+              Choose the plan that fits your business needs. No hidden fees, no surprises.
             </p>
           </motion.div>
         </div>
@@ -92,65 +99,59 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="py-16">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={plan.title}
                 initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
-                viewport={{ once: true, amount: 0.3 }}
                 className="relative"
               >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-cleaning-accent text-cleaning-text px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <Card className={`h-full hover:shadow-lg transition-shadow border-cleaning-border ${plan.popular ? 'ring-2 ring-cleaning-primary' : ''}`}>
+                <Card className={`h-full hover:shadow-lg transition-shadow border-cleaning-border ${plan.popular ? 'border-2 border-cleaning-primary' : ''}`}>
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-cleaning-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
                   <CardHeader className="text-center">
                     <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-cleaning-primary/10 rounded-lg">
-                        <plan.icon className="w-6 h-6 text-cleaning-primary" />
+                      <div className={`p-3 rounded-lg ${plan.popular ? 'bg-cleaning-primary' : 'bg-cleaning-primary/10'}`}>
+                        <plan.icon className={`w-8 h-8 ${plan.popular ? 'text-white' : 'text-cleaning-primary'}`} />
                       </div>
                     </div>
-                    <CardTitle className="text-cleaning-text">{plan.title}</CardTitle>
-                    <CardDescription className="text-cleaning-text/70">
+                    <CardTitle className="text-cleaning-text text-2xl mb-2 font-thicccboi">{plan.title}</CardTitle>
+                    <CardDescription className="text-cleaning-text/70 text-base mb-4">
                       {plan.description}
                     </CardDescription>
-                    <div className="mt-4">
-                      <div className="flex items-baseline justify-center">
-                        <span className="text-3xl font-bold text-cleaning-text">
-                          {typeof plan.price === 'number' ? `£${plan.price}` : plan.price}
-                        </span>
-                        {typeof plan.price === 'number' && (
-                          <span className="text-cleaning-text/60 ml-1">per clean</span>
-                        )}
-                      </div>
-                      <p className="text-sm text-cleaning-text/60 mt-1">{plan.note} pricing</p>
+                    <div className="mb-4">
+                      <span className="text-4xl font-bold text-cleaning-text font-thicccboi">
+                        £{plan.price}
+                      </span>
+                      {typeof plan.price === 'number' && (
+                        <span className="text-cleaning-text/70 text-sm ml-2">per month</span>
+                      )}
                     </div>
+                    {plan.note && (
+                      <p className="text-xs text-cleaning-text/60">{plan.note}</p>
+                    )}
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-cleaning-text mb-3">What's included:</h4>
-                      <ul className="space-y-2">
-                        {plan.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start space-x-2">
-                            <CheckCircle className="w-4 h-4 text-cleaning-primary mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-cleaning-text/80">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="mt-6">
-                      <Link to="/contact">
-                        <Button className={`w-full ${plan.popular ? 'bg-cleaning-primary hover:bg-cleaning-primary/90' : 'bg-cleaning-primary/90 hover:bg-cleaning-primary'}`}>
-                          Get a Quote
-                        </Button>
-                      </Link>
-                    </div>
+                    <ul className="space-y-3 mb-6">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-cleaning-primary mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-cleaning-text/80">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to="/contact">
+                      <Button className={`w-full ${plan.popular ? 'bg-cleaning-primary hover:bg-cleaning-primary/90' : 'border-cleaning-primary text-cleaning-primary hover:bg-cleaning-primary hover:text-white'}`}>
+                        Get Started
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -159,30 +160,25 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Disclaimer Section */}
+      {/* Important Information */}
       <section className="py-16 bg-cleaning-primary/5">
         <div className="container mx-auto max-w-4xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.3 }}
             className="bg-white p-8 rounded-lg shadow-md border border-cleaning-border"
           >
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start space-x-4">
               <Info className="w-6 h-6 text-cleaning-primary mt-1 flex-shrink-0" />
               <div>
-                <h3 className="text-lg font-semibold text-cleaning-text mb-3">
-                  Important Information
-                </h3>
-                <p className="text-cleaning-text/80 mb-4">
-                  Prices shown are indicative and may vary by home size and condition. We'll confirm after a quick chat and walkthrough to understand your specific needs.
-                </p>
-                <ul className="space-y-2 text-sm text-cleaning-text/70">
-                  <li>• Final pricing depends on home size, number of rooms, and current condition</li>
-                  <li>• We provide free, no-obligation quotes after a brief consultation</li>
-                  <li>• All prices include our eco-friendly cleaning products and equipment</li>
-                  <li>• Regular customers receive priority booking and special rates</li>
+                <h3 className="text-xl font-semibold text-cleaning-text mb-3 font-thicccboi">Important Information</h3>
+                <ul className="space-y-2 text-cleaning-text/80">
+                  <li>• All plans include domain and hosting</li>
+                  <li>• 14-day money-back guarantee</li>
+                  <li>• No long-term contracts</li>
+                  <li>• Custom solutions available on request</li>
+                  <li>• Setup and launch typically within 48 hours</li>
                 </ul>
               </div>
             </div>
@@ -195,20 +191,19 @@ const Pricing = () => {
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-cleaning-text mb-6">
-              Ready for a personalized quote?
+            <h2 className="text-3xl md:text-4xl font-bold text-cleaning-text mb-6 font-thicccboi">
+              Not Sure Which Plan Is Right?
             </h2>
             <p className="text-lg text-cleaning-text/80 mb-8">
-              Contact us to discuss your cleaning needs and get a tailored quote for your home.
+              Book a free call to discuss your needs and find the perfect solution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
                 <Button className="bg-cleaning-primary hover:bg-cleaning-primary/90 text-white px-8 py-3">
-                  Get a Quote
+                  Book a Free Call
                 </Button>
               </Link>
               <Link to="/services">
@@ -226,4 +221,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing; 
+export default Pricing;

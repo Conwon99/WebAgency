@@ -1,10 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import ContactBar from "@/components/ContactBar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, Bath, Microwave, Home, CheckCircle } from "lucide-react";
+import { Code2, Search, BarChart3, Rocket, Gauge, CheckCircle, Settings } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
 
@@ -13,64 +14,74 @@ const Services = () => {
 
   const services = [
     {
-      title: "Recurring Cleans",
-      description: "Regular cleaning to keep your home consistently fresh and welcoming.",
-      icon: Calendar,
+      title: "Web Design",
+      description: "Modern, fast websites built to convert visitors into leads.",
+      icon: Code2,
       features: [
-        "Weekly, fortnightly, or monthly schedules",
-        "Flexible timing to suit your routine",
-        "Consistent quality and attention to detail",
-        "Priority booking for regular customers"
+        "Custom design and copy",
+        "Mobile-first, SEO-friendly",
+        "Lead capture and CTAs"
       ]
     },
     {
-      title: "Deep Cleans",
-      description: "Thorough one-off cleaning for special occasions or neglected areas.",
-      icon: Sparkles,
+      title: "Local SEO",
+      description: "Rank higher in local search and Google Maps to win nearby customers.",
+      icon: Search,
       features: [
-        "Comprehensive room-by-room cleaning",
-        "Hard-to-reach areas and detailed attention",
-        "Perfect for spring cleaning or moving",
-        "Includes all regular cleaning tasks plus extras"
+        "Google Business Profile optimization",
+        "On-page SEO & internal linking",
+        "Citation and review strategy"
       ]
     },
     {
-      title: "Bathroom-Only Cleans",
-      description: "Focused cleaning service for bathrooms and wet rooms.",
-      icon: Bath,
+      title: "Conversion Tracking",
+      description: "Measure what matters with clean analytics and event tracking.",
+      icon: BarChart3,
       features: [
-        "Deep cleaning of all bathroom surfaces",
-        "Sanitization of high-touch areas",
-        "Grout and tile cleaning",
-        "Shower and bath deep clean"
+        "GA4 & Google Tag Manager setup",
+        "Form, call & WhatsApp tracking",
+        "Monthly performance reports"
       ]
     },
     {
-      title: "Oven/Microwave/Hob Cleans",
-      description: "Specialized cleaning for kitchen appliances and cooking areas.",
-      icon: Microwave,
+      title: "Speed Optimization",
+      description: "Improve Core Web Vitals for better rankings and user experience.",
+      icon: Gauge,
       features: [
-        "Oven interior and exterior cleaning",
-        "Microwave sanitization and deodorizing",
-        "Hob and extractor fan cleaning",
-        "Safe, food-safe cleaning products"
+        "Image & asset optimization",
+        "Code splitting & caching",
+        "CLS/LCP/INP improvements"
       ]
     },
     {
-      title: "End-of-Tenancy Cleans",
-      description: "Comprehensive cleaning to ensure your deposit return.",
-      icon: Home,
+      title: "Landing Pages & CRO",
+      description: "High-converting pages tested and refined to maximize leads.",
+      icon: Rocket,
       features: [
-        "Full property deep clean",
-        "Carpet and upholstery cleaning",
-        "Kitchen and bathroom sanitization",
-        "Professional cleaning standards"
+        "Offer-focused page design",
+        "A/B testing & heatmaps",
+        "Clear messaging hierarchy"
+      ]
+    },
+    {
+      title: "Maintenance & Support",
+      description: "Reliable updates, backups, and small changes handled for you.",
+      icon: Settings,
+      features: [
+        "Unlimited small edits",
+        "Security & uptime monitoring",
+        "Priority support"
       ]
     }
   ];
 
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
+      <Helmet>
+        <title>Services | Web Design, Local SEO, CRO, Speed | CodaPixel</title>
+        <meta name="description" content="Modern sites, Maps rankings, tracking & CRO. See how we drive leads." />
+        <link rel="canonical" href="https://codapixel.co.uk/services" />
+      </Helmet>
       <Header />
       <ContactBar />
       
@@ -83,11 +94,11 @@ const Services = () => {
             transition={{ duration: 0.7 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-cleaning-text mb-6">
-              Our Cleaning Services
+            <h1 className="text-4xl md:text-5xl font-bold text-cleaning-text mb-6 font-thicccboi">
+              Our Professional Services
             </h1>
             <p className="text-xl text-cleaning-text/80 mb-8">
-              We help busy households keep things sparkling with flexible scheduling and attention to detail. Choose a regular slot or book a one-off deep clean.
+              We build high-performing websites and local SEO systems that drive inbound leads and make results measurable.
             </p>
             <p className="text-lg text-cleaning-primary font-medium">
               "{tagline}"
@@ -160,7 +171,7 @@ const Services = () => {
               Ready to get started?
             </h2>
             <p className="text-lg text-cleaning-text/80 mb-8">
-              Tell us about your home and cleaning needs. We'll provide a personalized quote and find the perfect schedule for you.
+              Tell us about your business and goals. We'll provide a personalized proposal and show how we can drive results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
@@ -183,4 +194,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

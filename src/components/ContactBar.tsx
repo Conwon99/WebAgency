@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useBusiness } from "@/hooks/useBusiness";
 
 const ContactBar = () => {
-  const { phone, facebookUrl } = useBusiness();
+  const { phone, facebookUrl, name } = useBusiness();
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 border-b border-cleaning-border shadow-sm md:hidden" style={{ backgroundColor: '#eae6e8' }}>
@@ -15,7 +15,7 @@ const ContactBar = () => {
             className="h-8 w-auto"
           />
           <span className="text-sm font-medium text-cleaning-text">
-            Sparkles
+            {name}
           </span>
         </div>
         <div className="flex gap-2">

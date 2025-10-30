@@ -3,13 +3,48 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
-import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent } from "@/lib/analytics";
+import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent, trackSectionView } from "@/lib/analytics";
 import { useState, useEffect } from "react";
 
-const Hero = () => {
+interface HeroProps {
+  location?: string;
+}
+
+const Hero = ({ location }: HeroProps = {}) => {
   const { phone, facebookUrl } = useBusiness();
   const [currentReview, setCurrentReview] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  
+  const headline = location 
+    ? <>Web Design & SEO<br />for <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">{location} Businesses</span></>
+    : <>Websites that<br />generate clients - from just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span></>;
+  
+  const trustNote = location 
+    ? `Trusted by ${location} businesses`
+    : "Trusted by hundreds of businesses";
+
+  // Track section views when they come into viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionName = entry.target.getAttribute('data-section');
+            if (sectionName) {
+              trackSectionView(sectionName);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    // Observe all sections with data-section attribute
+    const sections = document.querySelectorAll('[data-section]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   const faqData = [
     {
@@ -71,27 +106,27 @@ const Hero = () => {
   const reviews = [
     {
       id: 1,
-      name: "Tegha Kum",
-      date: "3 months ago",
+      name: "Claire H.",
+      date: "2 weeks ago",
       rating: 5,
-      text: "We started working with Step Social when we needed consistency for our social media presence. Step Social team delivered exceptionally.",
-      avatar: "T"
+      text: "Brilliant new website. The team were punctual, professional and handled copy, design and SEO — enquiries started right away.",
+      avatar: "C"
     },
     {
       id: 2,
-      name: "David Robinson",
-      date: "5 months ago",
+      name: "Gordon P.",
+      date: "1 month ago",
       rating: 5,
-      text: "Absolutely incredible service, really can't recommend enough...well done.",
-      avatar: "D"
+      text: "Local SEO exceeded expectations. Our Google rankings improved quickly and we saw a clear uptick in calls and form submissions.",
+      avatar: "G"
     },
     {
       id: 3,
-      name: "Charlotte Jones",
-      date: "5 months ago",
+      name: "Emily R.",
+      date: "3 months ago",
       rating: 5,
-      text: "It has been a great experience working with the Step Social team. The entire process from the onboarding to content delivery was very smooth and easy. The team really understood our brand, messaging and positioning which...",
-      avatar: "C"
+      text: "We hired the team for a new website and local SEO. Leads started coming in within weeks and the site looks fantastic.",
+      avatar: "E"
     }
   ];
 
@@ -117,6 +152,7 @@ const Hero = () => {
     <>
       <section 
         id="home"
+        data-section="Hero"
         className="relative min-h-screen flex items-center justify-start overflow-x-hidden"
         style={{ backgroundColor: '#eae6e8' }}
       >
@@ -131,60 +167,16 @@ const Hero = () => {
               viewport={{ once: true, amount: 0.7 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-thicccboi font-bold !text-black mb-6 leading-tight"
             >
-              Websites that<br />
-              generate clients - from just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span>
+              {headline}
             </motion.h1>
             
-            
-
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-              viewport={{ once: true, amount: 0.7 }}
-              className="flex flex-col gap-3 text-sm text-gray-600 mb-12"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>No contracts. Cancel anytime</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>14-day money-back guarantee</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>Trusted by hundreds of businesses</span>
-              </div>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.35 }}
-              viewport={{ once: true, amount: 0.7 }}
-              className="mb-8"
-            >
-              <Button 
-                onClick={() => {
-                  trackBookCall('hero');
-                  document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
-              >
-                Book a free call
-              </Button>
-            </motion.div>
-
             {/* Google Review */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
               viewport={{ once: true, amount: 0.7 }}
-              className="flex items-center gap-3 mb-8"
+              className="flex items-center gap-3 mb-6"
             >
               <div className="flex items-center gap-2">
                 {/* Google Logo */}
@@ -216,6 +208,59 @@ const Hero = () => {
                 </div>
               </div>
             </motion.div>
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true, amount: 0.7 }}
+              className="flex flex-col gap-3 text-sm text-gray-600 mb-8"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span>No contracts. Cancel anytime</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span>14-day money-back guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span>{trustNote}</span>
+              </div>
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+              viewport={{ once: true, amount: 0.7 }}
+              className="mb-8"
+            >
+              <Button 
+                onClick={() => {
+                  trackBookCall('hero');
+                  document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-inter font-medium text-lg px-8 py-4 rounded-full shadow-lg"
+              >
+                Book a free call
+              </Button>
+            </motion.div>
             </div>
             
             {/* Hero Animation */}
@@ -225,11 +270,11 @@ const Hero = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
                 viewport={{ once: true, amount: 0.7 }}
-                className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto flex items-center justify-center"
+                className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto flex items-center justify-center"
               >
                 <dotlottie-wc 
                   src="https://lottie.host/8fc39289-f2b3-499d-8c21-9a0e0298e20c/zyltaQ3EPT.lottie" 
-                  style={{ width: '100%', height: '100%', maxWidth: '700px', maxHeight: '700px' }} 
+                  style={{ width: '100%', height: '100%', maxWidth: '1125px', maxHeight: '1125px' }} 
                   autoplay 
                   loop
                 />
@@ -240,7 +285,7 @@ const Hero = () => {
       </section>
 
       {/* Testimonial Quote */}
-      <section className="py-16 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section data-section="Testimonial" className="py-16 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -328,7 +373,7 @@ const Hero = () => {
       </section>
 
       {/* Google Reviews Slider */}
-      <section className="py-24 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section data-section="Google Reviews" className="py-24 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Navigation Arrows */}
@@ -420,7 +465,7 @@ const Hero = () => {
       </section>
 
       {/* Free Website Demo Section */}
-      <section className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section data-section="Free Demo Video" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <motion.h2 
@@ -470,12 +515,31 @@ const Hero = () => {
               </video>
             </motion.div>
           </div>
+          
+          {/* CTA Button After Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-12"
+          >
+            <Button 
+              onClick={() => {
+                trackBookCall('video_section');
+                openCalendly();
+              }}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-figtree font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Book a free call
+            </Button>
+          </motion.div>
         </div>
       </section>
 
 
       {/* Websites that Generate Clients Section */}
-      <section id="services" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section id="services" data-section="Services" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -549,7 +613,7 @@ const Hero = () => {
       </section>
 
       {/* Monthly Report Section */}
-      <section id="analytics" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section id="analytics" data-section="Analytics" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Right - Text */}
@@ -618,7 +682,7 @@ const Hero = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section id="portfolio" data-section="Portfolio" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-left">
             <div>
@@ -707,13 +771,13 @@ const Hero = () => {
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
                       src="/Portfolio/sparklessite.png" 
-                      alt="Sparkles Website" 
+                      alt="Client Project Website" 
                       className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Sparkles</h3>
-                    <p className="text-gray-600">Professional cleaning services website</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Client Project</h3>
+                    <p className="text-gray-600">Professional services website & local SEO</p>
                   </div>
                 </div>
             </div>
@@ -738,7 +802,7 @@ const Hero = () => {
             </div>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
+      <section id="faq" data-section="FAQ" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left - FAQ */}
@@ -821,9 +885,10 @@ const Hero = () => {
                       
                       {/* WhatsApp Button */}
                       <a 
-                        href="https://wa.me/447792145328"
+                        href="https://wa.me/447483879647"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackWhatsApp('faq')}
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-colors"
                       >
                         <img src="/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" style={{ filter: 'brightness(0) invert(1)' }} />

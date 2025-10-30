@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import ContactBar from "@/components/ContactBar";
 import Footer from "@/components/Footer";
@@ -13,46 +14,46 @@ const Reviews = () => {
 
   const testimonials = [
     {
-      name: "Sarah M.",
+      name: "Claire H.",
       location: "Ayr",
       rating: 5,
-      text: "Absolutely fantastic service! The team did an amazing job cleaning our home. Everything was spotless and they were so professional. Highly recommend!",
-      service: "Fortnightly cleaning"
+      text: "Our new website looks premium and loads fast. We started receiving enquiries within the first two weeks.",
+      service: "Web design"
     },
     {
-      name: "David L.",
+      name: "Gordon P.",
       location: "Prestwick",
       rating: 5,
-      text: "Great value for money and excellent attention to detail. The bathroom clean was thorough and they used eco-friendly products which I really appreciate.",
-      service: "Bathroom-only clean"
+      text: "Local SEO campaign boosted our Google Maps rankings. Calls and form submissions are up significantly.",
+      service: "Local SEO"
     },
     {
-      name: "Emma R.",
+      name: "Emily R.",
       location: "Troon",
       rating: 5,
-      text: "Reliable, trustworthy and thorough. They've been cleaning our home monthly for over a year now and we couldn't be happier with the service.",
-      service: "Monthly cleaning"
+      text: "Smooth process from brief to launch. Great communication and a site that actually converts.",
+      service: "Website redesign"
     },
     {
-      name: "Michael T.",
+      name: "Martin S.",
       location: "Ayr",
       rating: 5,
-      text: "Booked for an end-of-tenancy clean and they exceeded all expectations. The property was immaculate and we got our full deposit back.",
-      service: "End-of-tenancy clean"
+      text: "They rebuilt our landing pages and implemented tracking. Lead quality and volume improved straight away.",
+      service: "CRO & tracking"
     },
     {
-      name: "Lisa K.",
-      location: "Ayr",
+      name: "Laura K.",
+      location: "Monkton",
       rating: 5,
-      text: "The oven cleaning service was incredible! My oven looks brand new. Very professional and reasonably priced. Will definitely use again.",
-      service: "Oven cleaning"
+      text: "Clear strategy, transparent reporting and real results. Exactly what we needed.",
+      service: "SEO retainers"
     },
     {
       name: "James W.",
       location: "Prestwick",
       rating: 5,
-      text: "Flexible scheduling and always on time. The deep clean they did was thorough and they paid attention to all the little details.",
-      service: "One-off deep clean"
+      text: "Professional team. Delivered a modern site on time and helped us capture more leads.",
+      service: "New build website"
     }
   ];
 
@@ -67,6 +68,11 @@ const Reviews = () => {
 
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
+      <Helmet>
+        <title>Client Reviews | CodaPixel</title>
+        <meta name="description" content="Results-focused web design & local SEO. Read client feedback." />
+        <link rel="canonical" href="https://codapixel.co.uk/reviews" />
+      </Helmet>
       <Header />
       <ContactBar />
       
@@ -83,7 +89,7 @@ const Reviews = () => {
               What Our Customers Say
             </h1>
             <p className="text-xl text-cleaning-text/80 mb-8">
-              Don't just take our word for it. Here's what our satisfied customers have to say about our cleaning services.
+              Don't just take our word for it. Here's what our clients say about our web design and SEO services.
             </p>
             <div className="flex items-center justify-center space-x-2 mb-4">
               {renderStars(5)}
