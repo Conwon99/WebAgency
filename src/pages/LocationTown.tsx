@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import HomeServices from "@/components/HomeServices";
 import HomeContact from "@/components/HomeContact";
 import Footer from "@/components/Footer";
 import { trackPageView } from "@/lib/analytics";
@@ -62,7 +61,9 @@ const LocationTown = () => {
       </Helmet>
       <Header />
       
+      <main>
       <Hero location={townName} />
+      </main>
       
       <HomeContact />
       <Footer />

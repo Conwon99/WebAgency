@@ -7,6 +7,7 @@ import { useBusiness } from "@/hooks/useBusiness";
 import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent, trackSectionView } from "@/lib/analytics";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LottieLoader from "@/components/LottieLoader";
 
 interface HeroProps {
   location?: string;
@@ -121,18 +122,6 @@ const Hero = ({ location }: HeroProps = {}) => {
       answer: "No problem! We include unlimited revisions and updates in your monthly fee. Need content changes, new pages, or design tweaks? We've got you covered."
     }
   ];
-
-  // Load Lottie script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js';
-    script.type = 'module';
-    document.head.appendChild(script);
-    
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
   // Load Calendly script
   useEffect(() => {
@@ -321,7 +310,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 viewport={{ once: true, amount: 0.7 }}
                 className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto flex items-center justify-center"
               >
-                <dotlottie-wc 
+                <LottieLoader 
                   src="https://lottie.host/8fc39289-f2b3-499d-8c21-9a0e0298e20c/zyltaQ3EPT.lottie" 
                   style={{ width: '100%', height: '100%', maxWidth: '1125px', maxHeight: '1125px' }} 
                   autoplay 
@@ -434,6 +423,7 @@ const Hero = ({ location }: HeroProps = {}) => {
             {/* Navigation Arrows */}
             <button
               onClick={prevReview}
+              aria-label="Previous review"
               className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -441,6 +431,7 @@ const Hero = ({ location }: HeroProps = {}) => {
             
                 <button
               onClick={nextReview}
+              aria-label="Next review"
               className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
                 >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -507,6 +498,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <button
                       key={index}
                   onClick={() => setCurrentReview(index)}
+                      aria-label={`Go to review ${index + 1}`}
                       className={`w-3 h-3 rounded-full transition-all duration-200 ${
                     index === currentReview 
                       ? 'bg-blue-500 scale-125' 
@@ -654,12 +646,12 @@ const Hero = ({ location }: HeroProps = {}) => {
               {/* Right - Animation */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto overflow-hidden flex items-center justify-center">
-                  <dotlottie-wc 
+                  <LottieLoader 
                     src="https://lottie.host/72369cf7-6a3e-4ed9-b688-83310de3fca7/drjTHpg6LN.lottie" 
                     style={{ width: '100%', height: '100%', maxWidth: '480px', maxHeight: '480px' }} 
                     autoplay 
                     loop
-                  ></dotlottie-wc>
+                  />
                 </div>
               </div>
             </div>
@@ -826,13 +818,13 @@ const Hero = ({ location }: HeroProps = {}) => {
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
                       src="/Portfolio/sparklessite.webp" 
-                      alt="Client Project Website" 
+                      alt="Sparkle's Cleaning Service Website" 
                       className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Client Project</h3>
-                    <p className="text-gray-600">Professional services website & local SEO</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-thicccboi">Sparkle's Cleaning Service</h3>
+                    <p className="text-gray-600">Professional cleaning services website & local SEO</p>
                   </div>
                 </div>
             </div>
@@ -895,12 +887,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                       </div>
                       <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
                         <div className="w-full h-full">
-                          <dotlottie-wc 
+                          <LottieLoader 
                             src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
                             style={{ width: '100%', height: '100%' }} 
                             autoplay 
                             loop
-                          ></dotlottie-wc>
+                          />
                         </div>
                       </div>
                     </>
@@ -954,6 +946,8 @@ const Hero = ({ location }: HeroProps = {}) => {
                   <div key={index} className="border-b border-gray-300/30">
                     <button
                       onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                      aria-expanded={openFAQ === index}
+                      aria-label={`${faq.question} - ${openFAQ === index ? 'Collapse' : 'Expand'}`}
                       className="flex items-center justify-between w-full py-4 text-left hover:bg-gray-50/50 rounded-lg px-2 -mx-2 transition-colors duration-200"
                     >
                       <p className="text-gray-700 text-lg font-figtree font-medium pr-4">{faq.question}</p>
@@ -991,12 +985,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                   {/* Profile Picture */}
                   <div className="flex justify-center mb-6 relative z-10">
                     <div className="w-16 h-16 bg-yellow-300 rounded-full flex items-center justify-center">
-                      <dotlottie-wc 
+                      <LottieLoader 
                         src="https://lottie.host/d5d62b25-5fff-4af3-bfbd-f07d8d6b9e87/zZUgNVmBVU.lottie" 
                         style={{ width: '64px', height: '64px' }} 
                         autoplay 
                         loop
-                      ></dotlottie-wc>
+                      />
                     </div>
                   </div>
                   
@@ -1015,6 +1009,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                           trackBookCall('faq');
                           document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
                         }}
+                        aria-label="Book a free call from FAQ section"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-colors"
                       >
                         Book a call

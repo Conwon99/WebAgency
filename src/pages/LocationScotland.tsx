@@ -43,6 +43,7 @@ const LocationScotland = () => {
       </Helmet>
       <Header />
       
+      <main>
       <Hero location="Scotland" />
       
       {/* Scottish Cities Section */}
@@ -83,6 +84,7 @@ const LocationScotland = () => {
           </motion.div>
         </div>
       </section>
+      </main>
 
       <HomeContact />
       <Footer />

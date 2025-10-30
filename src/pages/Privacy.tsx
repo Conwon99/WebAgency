@@ -25,6 +25,7 @@ const Privacy = () => {
       <Header />
       <ContactBar />
       
+      <main>
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-cleaning-background to-white">
         <div className="container mx-auto max-w-7xl px-4">
@@ -150,6 +151,7 @@ const Privacy = () => {
           </motion.div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

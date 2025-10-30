@@ -8,23 +8,11 @@ import { motion } from "framer-motion";
 import { Code2, Search, BarChart3, Clock, CheckCircle } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import LottieLoader from "@/components/LottieLoader";
 
 const Services = () => {
   const { tagline } = useBusiness();
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js';
-    script.type = 'module';
-    document.head.appendChild(script);
-    
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
 
   const services = [
     {
@@ -92,6 +80,7 @@ const Services = () => {
       <Header />
       <ContactBar />
       
+      <main>
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gray-900">
         <div className="container mx-auto max-w-7xl px-4">
@@ -136,12 +125,12 @@ const Services = () => {
                       </div>
                       <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
                         <div className="w-full h-full">
-                          <dotlottie-wc 
+                          <LottieLoader 
                             src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
                             style={{ width: '100%', height: '100%' }} 
                             autoplay 
                             loop
-                          ></dotlottie-wc>
+                          />
                         </div>
                       </div>
                     </>
@@ -204,6 +193,7 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

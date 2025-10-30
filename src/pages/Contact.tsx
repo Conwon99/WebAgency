@@ -23,7 +23,9 @@ const Contact = () => {
       </Helmet>
       <Header />
       <ContactBar />
-      <HomeContact />
+      <main>
+        <HomeContact />
+      </main>
       <Footer />
     </div>
   );

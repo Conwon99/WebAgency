@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import HomeServices from "@/components/HomeServices";
 import HomeContact from "@/components/HomeContact";
 import Footer from "@/components/Footer";
 import { trackPageView } from "@/lib/analytics";
@@ -31,8 +30,10 @@ const Index = () => {
         <meta name="twitter:image" content="/C logo.webp" />
       </Helmet>
       <Header />
-      <Hero />
-      <HomeContact />
+      <main>
+        <Hero />
+        <HomeContact />
+      </main>
       <Footer />
     </div>
   );
