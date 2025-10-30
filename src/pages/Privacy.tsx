@@ -11,6 +11,16 @@ const Privacy = () => {
         <title>Privacy Policy | CodaPixel</title>
         <meta name="description" content="CodaPixel privacy policy and data protection information." />
         <link rel="canonical" href="https://codapixel.co.uk/privacy" />
+        <meta name="robots" content="noindex,follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Privacy Policy | CodaPixel" />
+        <meta property="og:description" content="CodaPixel privacy policy and data protection information." />
+        <meta property="og:url" content="https://codapixel.co.uk/privacy" />
+        <meta property="og:image" content="/C logo.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy | CodaPixel" />
+        <meta name="twitter:description" content="CodaPixel privacy policy and data protection information." />
+        <meta name="twitter:image" content="/C logo.webp" />
       </Helmet>
       <Header />
       <ContactBar />

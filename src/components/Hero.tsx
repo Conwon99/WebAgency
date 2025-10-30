@@ -1,19 +1,68 @@
 
 import { Button } from "@/components/ui/button";
+import { CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle, ChevronLeft, ChevronRight, Code2, Search, Clock } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent, trackSectionView } from "@/lib/analytics";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   location?: string;
 }
 
 const Hero = ({ location }: HeroProps = {}) => {
-  const { phone, facebookUrl } = useBusiness();
+  const { phone, facebookUrl, tagline } = useBusiness();
   const [currentReview, setCurrentReview] = useState(0);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  
+  const services = [
+    {
+      title: "Custom Website",
+      description: "Get online fast with my streamlined service. I'll customise a proven template with your logo, brand colours, and content, plus integrate contact forms and essential features for immediate customer connection.",
+      icon: Code2,
+      price: "£249",
+      priceNote: "starting from",
+      features: [
+        "Unique design and branding",
+        "Full content creation",
+        "Advanced functionality",
+        "Ongoing support & maintenance"
+      ],
+      popular: false
+    },
+    {
+      title: "Website in a Day",
+      description: "Bring your unique vision to life with a bespoke website. I start with a detailed consultation to understand your requirements, then deliver a custom online presence that perfectly reflects your brand in about two weeks.",
+      icon: Clock,
+      price: "£79",
+      priceNote: "per month",
+      features: [
+        "Website launch within 24 hours",
+        "Ongoing support and maintenance",
+        "Analytics reports",
+        "Unlimited updates (within reason)"
+      ],
+      popular: true
+    },
+    {
+      title: "SEO & Paid Ads",
+      description: "Drive traffic and leads through organic search and targeted advertising.",
+      icon: Search,
+      price: "£299",
+      priceNote: "per month",
+      features: [
+        "On-page SEO optimization",
+        "Local SEO & Google Maps",
+        "Google Ads",
+        "Meta (Facebook & Instagram) Ads",
+        "Campaign setup & optimization",
+        "Monthly reporting & insights"
+      ],
+      popular: false
+    }
+  ];
   
   const headline = location 
     ? <>Web Design & SEO<br />for <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">{location} Businesses</span></>
@@ -198,7 +247,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-gray-500 text-sm">(70)</span>
+                  <span className="text-gray-500 text-sm">(10+)</span>
                   </div>
                 {/* Verified Badge */}
                 <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
@@ -324,18 +373,21 @@ const Hero = ({ location }: HeroProps = {}) => {
             {/* First set of logos */}
             {[
               '/Logos/coffee-cup.svg',
-              '/Logos/Dirtworks Landscaping logo edited..png',
-              '/Logos/Logo with ange.png',
-              '/Logos/NK Logo no back.png',
-              '/Logos/rblogo - Edited.png',
-              '/Logos/remilogo.png',
-              '/Logos/RP - Edited.png',
-              '/Logos/sclogo.png'
+              '/Logos/dirtworks.webp',
+              '/Logos/logo-with-ange.webp',
+              '/Logos/nk-logo.webp',
+              '/Logos/rblogo.webp',
+              '/Logos/remilogo.webp',
+              '/Logos/rp-logo.webp',
+              '/Logos/sclogo.webp'
             ].map((logo, i) => (
               <div key={`first-${i}`} className="flex-shrink-0 flex items-center justify-center mx-6 sm:mx-8 lg:mx-12">
                 <img 
                   src={logo} 
-                  alt={`Company Logo ${i + 1}`}
+                  alt={logo.includes('tasse') ? 'Tasse Coffee Co logo' : logo.includes('able') ? 'Able Health logo' : `Company logo ${i + 1}`}
+                  loading="lazy"
+                  width="56"
+                  height="56"
                   className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
@@ -344,18 +396,21 @@ const Hero = ({ location }: HeroProps = {}) => {
             {/* Second set for seamless loop */}
             {[
               '/Logos/coffee-cup.svg',
-              '/Logos/Dirtworks Landscaping logo edited..png',
-              '/Logos/Logo with ange.png',
-              '/Logos/NK Logo no back.png',
-              '/Logos/rblogo - Edited.png',
-              '/Logos/remilogo.png',
-              '/Logos/RP - Edited.png',
-              '/Logos/sclogo.png'
+              '/Logos/dirtworks.webp',
+              '/Logos/logo-with-ange.webp',
+              '/Logos/nk-logo.webp',
+              '/Logos/rblogo.webp',
+              '/Logos/remilogo.webp',
+              '/Logos/rp-logo.webp',
+              '/Logos/sclogo.webp'
             ].map((logo, i) => (
               <div key={`second-${i}`} className="flex-shrink-0 flex items-center justify-center mx-6 sm:mx-8 lg:mx-12">
                 <img 
                   src={logo} 
-                  alt={`Company Logo ${i + 1}`}
+                  alt={logo.includes('tasse') ? 'Tasse Coffee Co logo' : logo.includes('able') ? 'Able Health logo' : `Company logo ${i + 1}`}
+                  loading="lazy"
+                  width="56"
+                  height="56"
                   className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
                   style={{ filter: 'brightness(0) invert(1)' }}
                   />
@@ -641,7 +696,7 @@ const Hero = ({ location }: HeroProps = {}) => {
               className="order-2 lg:order-1"
             >
               <img
-                src="/phone.png"
+                src="/phone.webp"
                 alt="Mobile analytics preview"
                 className="mx-auto lg:mx-0 max-w-full w-[800px] sm:w-[1000px] md:w-[1200px] lg:w-[1400px] xl:w-[1600px]"
                 loading="lazy"
@@ -710,7 +765,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 <div className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
-                      src="/Portfolio/tassecoffeeco.com_(port2) (1).png" 
+                      src="/Portfolio/tassecoffeeco.webp" 
                       alt="Tasse Coffee Co Website" 
                       className="max-h-full max-w-full object-contain"
                     />
@@ -725,7 +780,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 <div className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
-                      src="/Portfolio/holistics71.com_(port2) (1).png" 
+                      src="/Portfolio/holistics71.webp" 
                       alt="Holistics71 Website" 
                       className="max-h-full max-w-full object-contain"
                     />
@@ -740,7 +795,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 <div className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
-                      src="/Portfolio/rbjoinery.com_(port2).png" 
+                      src="/Portfolio/rbjoinery.webp" 
                       alt="RB Joinery Website" 
                       className="max-h-full max-w-full object-contain"
                     />
@@ -755,7 +810,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 <div className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
-                      src="/Portfolio/proroof.png" 
+                      src="/Portfolio/proroof.webp" 
                       alt="ProRoof Website" 
                       className="max-h-full max-w-full object-contain"
                     />
@@ -770,7 +825,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                 <div className="bg-[#eae6e8] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="h-80 bg-[#eae6e8] flex items-center justify-center">
                     <img 
-                      src="/Portfolio/sparklessite.png" 
+                      src="/Portfolio/sparklessite.webp" 
                       alt="Client Project Website" 
                       className="max-h-full max-w-full object-contain"
                     />
@@ -800,6 +855,88 @@ const Hero = ({ location }: HeroProps = {}) => {
                 </div>
               </div>
             </div>
+
+      {/* Pricing Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-figtree">
+              Pricing
+            </h2>
+            <p className="text-xl text-gray-300 font-figtree mb-4">
+              Websites in 24 hours, custom builds, SEO optimization, and paid advertising that drive real results for your business.
+            </p>
+            <p className="text-lg text-blue-400 font-medium font-figtree">
+              "{tagline}"
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <div className={`h-full ${service.popular ? 'bg-blue-600' : 'bg-gray-800'} rounded-2xl p-6 hover:shadow-2xl transition-shadow flex flex-col relative`}>
+                  {service.popular && (
+                    <>
+                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-50">
+                        <span className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold font-figtree">
+                          Most Popular
+                        </span>
+                      </div>
+                      <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
+                        <div className="w-full h-full">
+                          <dotlottie-wc 
+                            src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
+                            style={{ width: '100%', height: '100%' }} 
+                            autoplay 
+                            loop
+                          ></dotlottie-wc>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  <div className="mb-6 relative z-10">
+                    <CardTitle className="text-white text-xl font-bold font-figtree mb-4">
+                      {service.title}
+                    </CardTitle>
+                    <div className="flex items-baseline">
+                      <span className="text-5xl font-bold text-white font-figtree">{service.price}</span>
+                    </div>
+                    <p className="text-sm text-gray-300 font-figtree">{service.priceNote}</p>
+                  </div>
+                  <CardContent className="flex-1 flex flex-col p-0 relative z-10">
+                    <div className="space-y-4 mb-6 flex-1">
+                      <ul className="space-y-3">
+                        {service.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start space-x-2">
+                            <CheckCircle className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-white font-figtree">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <Link to="/contact" className="mt-auto">
+                      <Button className={`w-full ${service.popular ? 'bg-black hover:bg-gray-900' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg py-3 font-figtree`}>
+                          Get a Quote
+                        </Button>
+                      </Link>
+                  </CardContent>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <section id="faq" data-section="FAQ" className="py-20 overflow-x-hidden" style={{ backgroundColor: '#eae6e8' }}>
@@ -885,7 +1022,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                       
                       {/* WhatsApp Button */}
                       <a 
-                        href="https://wa.me/447483879647"
+                        href="https://wa.me/447792145328"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackWhatsApp('faq')}

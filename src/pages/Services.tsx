@@ -5,88 +5,95 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Code2, Search, BarChart3, Rocket, Gauge, CheckCircle, Settings } from "lucide-react";
+import { Code2, Search, BarChart3, Clock, CheckCircle } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Services = () => {
   const { tagline } = useBusiness();
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js';
+    script.type = 'module';
+    document.head.appendChild(script);
+    
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   const services = [
     {
-      title: "Web Design",
-      description: "Modern, fast websites built to convert visitors into leads.",
+      title: "Custom Website",
+      description: "Get online fast with my streamlined service. I'll customise a proven template with your logo, brand colours, and content, plus integrate contact forms and essential features for immediate customer connection.",
       icon: Code2,
+      price: "£249",
+      priceNote: "starting from",
       features: [
-        "Custom design and copy",
-        "Mobile-first, SEO-friendly",
-        "Lead capture and CTAs"
-      ]
+        "Unique design and branding",
+        "Full content creation",
+        "Advanced functionality",
+        "Ongoing support & maintenance"
+      ],
+      popular: false
     },
     {
-      title: "Local SEO",
-      description: "Rank higher in local search and Google Maps to win nearby customers.",
+      title: "Website in a Day",
+      description: "Bring your unique vision to life with a bespoke website. I start with a detailed consultation to understand your requirements, then deliver a custom online presence that perfectly reflects your brand in about two weeks.",
+      icon: Clock,
+      price: "£79",
+      priceNote: "per month",
+      features: [
+        "Website launch within 24 hours",
+        "Ongoing support and maintenance",
+        "Analytics reports",
+        "Unlimited updates (within reason)"
+      ],
+      popular: true
+    },
+    {
+      title: "SEO & Paid Ads",
+      description: "Drive traffic and leads through organic search and targeted advertising.",
       icon: Search,
+      price: "£299",
+      priceNote: "per month",
       features: [
-        "Google Business Profile optimization",
-        "On-page SEO & internal linking",
-        "Citation and review strategy"
-      ]
-    },
-    {
-      title: "Conversion Tracking",
-      description: "Measure what matters with clean analytics and event tracking.",
-      icon: BarChart3,
-      features: [
-        "GA4 & Google Tag Manager setup",
-        "Form, call & WhatsApp tracking",
-        "Monthly performance reports"
-      ]
-    },
-    {
-      title: "Speed Optimization",
-      description: "Improve Core Web Vitals for better rankings and user experience.",
-      icon: Gauge,
-      features: [
-        "Image & asset optimization",
-        "Code splitting & caching",
-        "CLS/LCP/INP improvements"
-      ]
-    },
-    {
-      title: "Landing Pages & CRO",
-      description: "High-converting pages tested and refined to maximize leads.",
-      icon: Rocket,
-      features: [
-        "Offer-focused page design",
-        "A/B testing & heatmaps",
-        "Clear messaging hierarchy"
-      ]
-    },
-    {
-      title: "Maintenance & Support",
-      description: "Reliable updates, backups, and small changes handled for you.",
-      icon: Settings,
-      features: [
-        "Unlimited small edits",
-        "Security & uptime monitoring",
-        "Priority support"
-      ]
+        "On-page SEO optimization",
+        "Local SEO & Google Maps",
+        "Google Ads",
+        "Meta (Facebook & Instagram) Ads",
+        "Campaign setup & optimization",
+        "Monthly reporting & insights"
+      ],
+      popular: false
     }
   ];
 
   return (
     <div className="font-inter min-h-screen bg-cleaning-background">
       <Helmet>
-        <title>Services | Web Design, Local SEO, CRO, Speed | CodaPixel</title>
-        <meta name="description" content="Modern sites, Maps rankings, tracking & CRO. See how we drive leads." />
+        <title>Services | Website in a Day, Custom Websites, SEO, Paid Ads | CodaPixel</title>
+        <meta name="description" content="Professional websites in 24 hours, custom sites, SEO optimization, and paid advertising that drive results." />
         <link rel="canonical" href="https://codapixel.co.uk/services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Services | Website in a Day, Custom Websites, SEO, Paid Ads | CodaPixel" />
+        <meta property="og:description" content="Professional websites in 24 hours, custom sites, SEO optimization, and paid advertising that drive results." />
+        <meta property="og:url" content="https://codapixel.co.uk/services" />
+        <meta property="og:image" content="/C logo.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Services | Website in a Day, Custom Websites, SEO, Paid Ads | CodaPixel" />
+        <meta name="twitter:description" content="Professional websites in 24 hours, custom sites, SEO optimization, and paid advertising that drive results." />
+        <meta name="twitter:image" content="/C logo.webp" />
       </Helmet>
       <Header />
       <ContactBar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-cleaning-background to-white">
+      <section className="pt-32 pb-16 bg-gray-900">
         <div className="container mx-auto max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -94,13 +101,13 @@ const Services = () => {
             transition={{ duration: 0.7 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-cleaning-text mb-6 font-thicccboi">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-thicccboi">
               Our Professional Services
             </h1>
-            <p className="text-xl text-cleaning-text/80 mb-8">
-              We build high-performing websites and local SEO systems that drive inbound leads and make results measurable.
+            <p className="text-xl text-gray-300 mb-8">
+              Websites in 24 hours, custom builds, SEO optimization, and paid advertising that drive real results for your business.
             </p>
-            <p className="text-lg text-cleaning-primary font-medium">
+            <p className="text-lg text-blue-400 font-medium">
               "{tagline}"
             </p>
           </motion.div>
@@ -108,9 +115,9 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-900">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -119,39 +126,53 @@ const Services = () => {
                 transition={{ duration: 0.7, delay: index * 0.1 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow border-cleaning-border">
-                  <CardHeader>
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="p-3 bg-cleaning-primary/10 rounded-lg">
-                        <service.icon className="w-6 h-6 text-cleaning-primary" />
+                <div className={`h-full ${service.popular ? 'bg-blue-600' : 'bg-gray-800'} rounded-2xl p-6 hover:shadow-2xl transition-shadow flex flex-col relative`}>
+                  {service.popular && (
+                    <>
+                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-50">
+                        <span className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold font-figtree">
+                          Most Popular
+                        </span>
                       </div>
-                      <CardTitle className="text-cleaning-text">{service.title}</CardTitle>
+                      <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
+                        <div className="w-full h-full">
+                          <dotlottie-wc 
+                            src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
+                            style={{ width: '100%', height: '100%' }} 
+                            autoplay 
+                            loop
+                          ></dotlottie-wc>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  <div className="mb-6 relative z-10">
+                    <CardTitle className="text-white text-xl font-bold font-figtree mb-4">
+                      {service.title}
+                    </CardTitle>
+                    <div className="flex items-baseline">
+                      <span className="text-5xl font-bold text-white font-figtree">{service.price}</span>
                     </div>
-                    <CardDescription className="text-cleaning-text/70 text-base">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-cleaning-text mb-3">What's included:</h4>
-                      <ul className="space-y-2">
+                    <p className="text-sm text-gray-300 font-figtree">{service.priceNote}</p>
+                  </div>
+                  <CardContent className="flex-1 flex flex-col p-0 relative z-10">
+                    <div className="space-y-4 mb-6 flex-1">
+                      <ul className="space-y-3">
                         {service.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start space-x-2">
-                            <CheckCircle className="w-4 h-4 text-cleaning-primary mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-cleaning-text/80">{feature}</span>
+                            <CheckCircle className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-white font-figtree">{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="mt-6">
-                      <Link to="/contact">
-                        <Button className="w-full bg-cleaning-primary hover:bg-cleaning-primary/90">
+                    <Link to="/contact" className="mt-auto">
+                      <Button className={`w-full ${service.popular ? 'bg-black hover:bg-gray-900' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg py-3 font-figtree`}>
                           Get a Quote
                         </Button>
                       </Link>
-                    </div>
                   </CardContent>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -159,7 +180,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-cleaning-primary/5">
+      <section className="py-16 bg-gray-800">
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -167,21 +188,16 @@ const Services = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-cleaning-text mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-figtree">
               Ready to get started?
             </h2>
-            <p className="text-lg text-cleaning-text/80 mb-8">
+            <p className="text-lg text-gray-300 mb-8 font-figtree">
               Tell us about your business and goals. We'll provide a personalized proposal and show how we can drive results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button className="bg-cleaning-primary hover:bg-cleaning-primary/90 text-white px-8 py-3">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-figtree">
                   Get a Quote
-                </Button>
-              </Link>
-              <Link to="/pricing">
-                <Button variant="outline" className="border-cleaning-primary text-cleaning-primary hover:bg-cleaning-primary hover:text-white px-8 py-3">
-                  View Pricing
                 </Button>
               </Link>
             </div>
@@ -194,4 +210,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Services; 

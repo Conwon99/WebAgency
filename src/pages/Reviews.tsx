@@ -72,6 +72,15 @@ const Reviews = () => {
         <title>Client Reviews | CodaPixel</title>
         <meta name="description" content="Results-focused web design & local SEO. Read client feedback." />
         <link rel="canonical" href="https://codapixel.co.uk/reviews" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Client Reviews | CodaPixel" />
+        <meta property="og:description" content="Results-focused web design & SEO. Read client feedback." />
+        <meta property="og:url" content="https://codapixel.co.uk/reviews" />
+        <meta property="og:image" content="/C logo.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Client Reviews | CodaPixel" />
+        <meta name="twitter:description" content="Results-focused web design & SEO. Read client feedback." />
+        <meta name="twitter:image" content="/C logo.webp" />
       </Helmet>
       <Header />
       <ContactBar />

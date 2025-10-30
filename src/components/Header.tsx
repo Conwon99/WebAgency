@@ -3,10 +3,11 @@ import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useBusiness } from "@/hooks/useBusiness";
-import { trackBookCall } from "@/lib/analytics";
-import { Link } from "react-router-dom";
+import { trackBookCall, trackCTA } from "@/lib/analytics";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { name, phone, facebookUrl } = useBusiness();
 
@@ -43,6 +44,21 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If element doesn't exist, navigate to home and then scroll
+      window.location.href = `/#${elementId}`;
+    }
+  };
+
+  const handleScrollToOnMobile = (elementId: string) => {
+    setIsMobileMenuOpen(false);
+    handleScrollTo(elementId);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm" style={{ backgroundColor: '#eae6e8' }}>
       <div className="container mx-auto max-w-7xl px-4 py-4">
@@ -50,9 +66,12 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/C logo.png" 
+              src="/C logo.webp" 
               alt="CodaPixel Logo"
               className="h-12 w-auto"
+              width="120"
+              height="48"
+              loading="eager"
             />
           </Link>
           
@@ -60,30 +79,30 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-8">
             {/* Desktop Navigation */}
             <nav className="flex items-center space-x-8">
-              <button 
-                onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link 
+                to="/"
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
-              </button>
+              </Link>
+              <Link 
+                to="/services"
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
+              >
+                Services
+              </Link>
               <button 
-                onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => handleScrollTo('portfolio')}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Portfolio
               </button>
-              <button 
-                onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-              >
-                FAQ
-              </button>
-              <button 
-                onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link 
+                to="/contact"
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
-              </button>
+              </Link>
             </nav>
 
             {/* Desktop CTA */}
@@ -113,42 +132,33 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-cleaning-border">
             <nav className="flex flex-col space-y-4 mt-4">
-              <button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link 
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
-              </button>
+              </Link>
+              <Link 
+                to="/services"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
+              >
+                Services
+              </Link>
               <button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => handleScrollToOnMobile('portfolio')}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Portfolio
               </button>
-              <button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
-              >
-                FAQ
-              </button>
-              <button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link 
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
-              </button>
+              </Link>
             </nav>
             <div className="flex flex-col space-y-2 mt-4">
               <Button 

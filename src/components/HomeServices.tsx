@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Code2, Search, BarChart3, Rocket, Gauge, ArrowRight, Settings } from "lucide-react";
+import { Code2, Search, BarChart3, Clock, ArrowRight } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { Link } from "react-router-dom";
 
@@ -10,63 +10,43 @@ const HomeServices = () => {
 
   const services = [
     {
-      title: "Web Design",
-      description: "Modern, fast websites built to convert visitors into leads.",
-      icon: Code2,
+      title: "Website in a Day",
+      description: "Get a professional website launched in just 24 hours. Fast, modern, and conversion-focused.",
+      icon: Clock,
       features: [
         "Custom design and copy",
         "Mobile-first, SEO-friendly",
-        "Lead capture and CTAs"
+        "Quick setup and launch"
       ]
     },
     {
-      title: "Local SEO",
-      description: "Rank higher in local search and Google Maps to win nearby customers.",
+      title: "Custom Website",
+      description: "Fully bespoke websites tailored to your brand and business goals.",
+      icon: Code2,
+      features: [
+        "Unique design and branding",
+        "Full content creation",
+        "Advanced functionality"
+      ]
+    },
+    {
+      title: "SEO",
+      description: "Rank higher in search results and drive organic traffic to your website.",
       icon: Search,
       features: [
-        "Google Business Profile optimization",
-        "On-page SEO & internal linking",
-        "Citation and review strategy"
+        "On-page SEO optimization",
+        "Local SEO & Google Maps",
+        "Monthly reporting & insights"
       ]
     },
     {
-      title: "Conversion Tracking",
-      description: "Measure what matters with clean analytics and event tracking.",
+      title: "Paid Ads",
+      description: "Quickly generate leads with targeted advertising campaigns.",
       icon: BarChart3,
       features: [
-        "GA4 & Google Tag Manager setup",
-        "Form, call & WhatsApp tracking",
-        "Monthly performance reports"
-      ]
-    },
-    {
-      title: "Speed Optimization",
-      description: "Improve Core Web Vitals for better rankings and user experience.",
-      icon: Gauge,
-      features: [
-        "Image & asset optimization",
-        "Code splitting & caching",
-        "CLS/LCP/INP improvements"
-      ]
-    },
-    {
-      title: "Landing Pages & CRO",
-      description: "High-converting pages tested and refined to maximize leads.",
-      icon: Rocket,
-      features: [
-        "Offer-focused page design",
-        "A/B testing & heatmaps",
-        "Clear messaging hierarchy"
-      ]
-    },
-    {
-      title: "Maintenance & Support",
-      description: "Reliable updates, backups, and small changes handled for you.",
-      icon: Settings,
-      features: [
-        "Unlimited small edits",
-        "Security & uptime monitoring",
-        "Priority support"
+        "Google Ads",
+        "Meta (Facebook & Instagram)",
+        "Campaign optimization"
       ]
     }
   ];
@@ -160,7 +140,7 @@ const HomeServices = () => {
             <div className="flex justify-center">
               <div className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem]">
                 <img
-                  src="/phone.png"
+                  src="/phone.webp"
                   alt="Website & analytics illustration"
                   className="w-full h-full object-contain"
                 />

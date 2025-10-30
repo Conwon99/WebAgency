@@ -10,7 +10,7 @@ const ContactBar = () => {
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center space-x-2">
           <img 
-            src="/C logo.png" 
+            src="/C logo.webp" 
             alt="C Logo"
             className="h-8 w-auto"
           />

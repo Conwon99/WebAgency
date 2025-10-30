@@ -11,9 +11,14 @@ const Locations = () => {
   const locations = {
     scotland: [
       { city: "Ayrshire", link: "/locations/ayrshire", serviceAreas: "Ayr, Prestwick, Troon, Kilmarnock, Irvine, and all of Ayrshire" },
-      { city: "Glasgow", serviceAreas: "Glasgow, East Kilbride, Paisley, and more" },
-      { city: "Edinburgh", serviceAreas: "Edinburgh, Leith, Livingston, and more" },
-      { city: "Aberdeen", serviceAreas: "Aberdeen, Inverness, and surrounding areas" }
+      { city: "Glasgow", link: "/locations/glasgow", serviceAreas: "Glasgow, East Kilbride, Paisley, and more" },
+      { city: "Edinburgh", link: "/locations/edinburgh", serviceAreas: "Edinburgh, Leith, Livingston, and more" },
+      { city: "Aberdeen", link: "/locations/aberdeen", serviceAreas: "Aberdeen and surrounding areas" },
+      { city: "Dundee", link: "/locations/dundee", serviceAreas: "Dundee and surrounding areas" },
+      { city: "Inverness", link: "/locations/inverness", serviceAreas: "Inverness and Highland region" },
+      { city: "Stirling", link: "/locations/stirling", serviceAreas: "Stirling and surrounding areas" },
+      { city: "Perth", link: "/locations/perth", serviceAreas: "Perth and surrounding areas" },
+      { city: "Dunfermline", link: "/locations/dunfermline", serviceAreas: "Dunfermline and Fife" }
     ],
     england: [
       { city: "London", serviceAreas: "London and Greater London areas" },
@@ -42,34 +47,48 @@ const Locations = () => {
     ]
   } as const;
 
-  const renderLocationCard = (city: string, serviceAreas: string, link?: string) => {
-    const LocationCard = (
-      <Card className="hover:shadow-lg transition-shadow border-cleaning-border cursor-pointer">
-        <CardContent className="p-6">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-cleaning-text mb-2 font-thicccboi">
-                {city}
-              </h3>
-              <p className="text-sm text-cleaning-text/70 mb-3">
-                Service Areas: <span className="font-semibold">{serviceAreas}</span>
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-cleaning-primary flex-shrink-0 ml-4" />
-          </div>
-        </CardContent>
-      </Card>
-    );
-
+  const renderLocationCard = (city: string, serviceAreas: string, link?: string, index?: number) => {
     if (link) {
       return (
-        <Link key={city} to={link}>
-          {LocationCard}
+        <Link key={`${city}-${index}`} to={link} className="block h-full">
+          <Card className="hover:shadow-lg transition-shadow border-cleaning-border cursor-pointer h-full">
+            <CardContent className="p-6">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-cleaning-text mb-2 font-thicccboi">
+                    {city}
+                  </h3>
+                  <p className="text-sm text-cleaning-text/70 mb-3">
+                    Service Areas: <span className="font-semibold">{serviceAreas}</span>
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-cleaning-primary flex-shrink-0 ml-4" />
+              </div>
+            </CardContent>
+          </Card>
         </Link>
       );
     }
     
-    return <div key={city}>{LocationCard}</div>;
+    return (
+      <div key={`${city}-${index}`}>
+        <Card className="hover:shadow-lg transition-shadow border-cleaning-border cursor-pointer h-full">
+          <CardContent className="p-6">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-cleaning-text mb-2 font-thicccboi">
+                  {city}
+                </h3>
+                <p className="text-sm text-cleaning-text/70 mb-3">
+                  Service Areas: <span className="font-semibold">{serviceAreas}</span>
+                </p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-cleaning-primary flex-shrink-0 ml-4" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
   };
 
   return (
@@ -78,6 +97,25 @@ const Locations = () => {
         <title>Service Locations | CodaPixel</title>
         <meta name="description" content="Web design and local SEO services across Scotland, England, Ireland, Wales, USA, and Canada. Find your location." />
         <link rel="canonical" href="https://codapixel.co.uk/locations" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Service Locations | CodaPixel" />
+        <meta property="og:description" content="Web design and SEO services across the UK, Ireland, North America, and beyond." />
+        <meta property="og:url" content="https://codapixel.co.uk/locations" />
+        <meta property="og:image" content="/C logo.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Service Locations | CodaPixel" />
+        <meta name="twitter:description" content="Web design and SEO services across the UK, Ireland, North America, and beyond." />
+        <meta name="twitter:image" content="/C logo.webp" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://codapixel.co.uk/' },
+              { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://codapixel.co.uk/locations' }
+            ]
+          })}
+        </script>
       </Helmet>
       <Header />
       
@@ -115,7 +153,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">Scotland</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.scotland.map((loc) => renderLocationCard(loc.city, loc.serviceAreas, loc.link))}
+              {locations.scotland.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, loc.link, index))}
             </div>
           </motion.div>
 
@@ -129,7 +167,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">England</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.england.map((loc) => renderLocationCard(loc.city, loc.serviceAreas))}
+              {locations.england.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, undefined, index))}
             </div>
           </motion.div>
 
@@ -143,7 +181,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">Ireland</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.ireland.map((loc) => renderLocationCard(loc.city, loc.serviceAreas))}
+              {locations.ireland.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, undefined, index))}
             </div>
           </motion.div>
 
@@ -157,7 +195,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">Wales</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.wales.map((loc) => renderLocationCard(loc.city, loc.serviceAreas))}
+              {locations.wales.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, undefined, index))}
             </div>
           </motion.div>
 
@@ -171,7 +209,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">USA</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.usa.map((loc) => renderLocationCard(loc.city, loc.serviceAreas))}
+              {locations.usa.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, undefined, index))}
             </div>
           </motion.div>
 
@@ -185,7 +223,7 @@ const Locations = () => {
           >
             <h2 className="text-3xl font-bold text-cleaning-text mb-8 font-thicccboi">Canada</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.canada.map((loc) => renderLocationCard(loc.city, loc.serviceAreas))}
+              {locations.canada.map((loc, index) => renderLocationCard(loc.city, loc.serviceAreas, undefined, index))}
             </div>
           </motion.div>
 
@@ -260,7 +298,7 @@ const Locations = () => {
                   Get a Free Quote
                 </Button>
               </Link>
-              <a href="tel:+447483879647">
+              <a href="tel:+447792145328">
                 <Button variant="outline" className="border-cleaning-primary text-cleaning-primary hover:bg-cleaning-primary hover:text-white px-8 py-3">
                   <Phone className="w-4 h-4 mr-2" />
                   Call Us Now

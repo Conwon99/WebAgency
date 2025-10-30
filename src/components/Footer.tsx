@@ -14,9 +14,12 @@ const Footer = () => {
             <div className="mb-4">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/C logo.png" 
+                  src="/C logo.webp" 
                   alt="CodaPixel Logo"
                   className="h-10 w-auto"
+                  width="120"
+                  height="40"
+                  loading="lazy"
                 />
                 <h3 className="text-xl font-bold font-thicccboi">CodaPixel</h3>
               </div>
@@ -26,15 +29,15 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-4">
               <a 
-                href="tel:+447483879647"
+                href="tel:+447792145328"
                 onClick={() => trackPhoneCall('footer')}
                 className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>+44 7483 879647</span>
+                <span>+44 7792 145328</span>
               </a>
               <a 
-                href="https://wa.me/447483879647"
+                href="https://wa.me/447792145328"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsApp('footer')}
@@ -74,11 +77,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/pricing" className="hover:text-white transition-colors">
-                  Pricing
-                </Link>
-              </li>
-              <li>
                 <Link to="/reviews" className="hover:text-white transition-colors">
                   Reviews
                 </Link>
@@ -101,7 +99,7 @@ const Footer = () => {
             <h4 className="text-lg font-thicccboi font-semibold mb-4">Locations</h4>
             <ul className="space-y-2 text-gray-300 font-figtree">
               <li>
-                <Link to="/locations/ayrshire" className="hover:text-white transition-colors">
+                <Link to="/locations/scotland" className="hover:text-white transition-colors">
                   Scotland
                 </Link>
               </li>
@@ -130,7 +128,7 @@ const Footer = () => {
                 Privacy Policy
               </Link>
               <a 
-                href="https://wa.me/447483879647"
+                href="https://wa.me/447792145328"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsApp('footer_bottom')}

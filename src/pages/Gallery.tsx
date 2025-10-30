@@ -21,35 +21,35 @@ const Gallery = () => {
       id: 2,
       title: "Tasse Coffee Co",
       description: "Artisan coffee company website with e-commerce integration",
-      image: "/Portfolio/tassecoffeeco.com_(port2) (1).png",
+      image: "/Portfolio/tassecoffeeco.webp",
       category: "Retail"
     },
     {
       id: 3,
       title: "Holistics71",
       description: "Modern holistic wellness platform with booking functionality",
-      image: "/Portfolio/holistics71.com_(port2) (1).png",
+      image: "/Portfolio/holistics71.webp",
       category: "Wellness"
     },
     {
       id: 4,
       title: "RB Joinery",
       description: "Professional joinery and carpentry services website",
-      image: "/Portfolio/rbjoinery.com_(port2).png",
+      image: "/Portfolio/rbjoinery.webp",
       category: "Construction"
     },
     {
       id: 5,
       title: "ProRoof",
       description: "Professional roofing services with lead capture",
-      image: "/Portfolio/proroof.png",
+      image: "/Portfolio/proroof.webp",
       category: "Construction"
     },
     {
       id: 6,
       title: "Client Project",
       description: "Professional services website with local SEO optimization",
-      image: "/Portfolio/sparklessite.png",
+      image: "/Portfolio/sparklessite.webp",
       category: "Services"
     }
   ];
@@ -60,6 +60,15 @@ const Gallery = () => {
         <title>Portfolio | Web Design Projects | CodaPixel</title>
         <meta name="description" content="View our portfolio of web design and SEO projects. Real results for Ayrshire businesses." />
         <link rel="canonical" href="https://codapixel.co.uk/gallery" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Portfolio | Web Design Projects | CodaPixel" />
+        <meta property="og:description" content="View our portfolio of web design and SEO projects. Real results for Ayrshire businesses." />
+        <meta property="og:url" content="https://codapixel.co.uk/gallery" />
+        <meta property="og:image" content="/C logo.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Portfolio | Web Design Projects | CodaPixel" />
+        <meta name="twitter:description" content="View our portfolio of web design and SEO projects. Real results for Ayrshire businesses." />
+        <meta name="twitter:image" content="/C logo.webp" />
       </Helmet>
       <Header />
       <ContactBar />
