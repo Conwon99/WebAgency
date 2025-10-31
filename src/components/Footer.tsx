@@ -1,5 +1,4 @@
 import { Phone, Facebook, ExternalLink, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
 import { trackWhatsApp, trackPhoneCall } from "@/lib/analytics";
 
 const Footer = () => {
@@ -67,29 +66,29 @@ const Footer = () => {
             <h4 className="text-lg font-thicccboi font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-300 font-figtree">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <a href="/" className="hover:text-white transition-colors">
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <a href="/services" className="hover:text-white transition-colors">
                   Services
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/reviews" className="hover:text-white transition-colors">
+                <a href="/reviews" className="hover:text-white transition-colors">
                   Reviews
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/gallery" className="hover:text-white transition-colors">
+                <a href="/gallery" className="hover:text-white transition-colors">
                   Portfolio
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-white transition-colors">
+                <a href="/contact" className="hover:text-white transition-colors">
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -99,9 +98,9 @@ const Footer = () => {
             <h4 className="text-lg font-thicccboi font-semibold mb-4">Locations</h4>
             <ul className="space-y-2 text-gray-300 font-figtree">
               <li>
-                <Link to="/locations/scotland" className="hover:text-white transition-colors">
+                <a href="/locations/scotland" className="hover:text-white transition-colors">
                   Scotland
-                </Link>
+                </a>
               </li>
               <li>England</li>
               <li>Ireland</li>
@@ -109,9 +108,9 @@ const Footer = () => {
               <li>USA</li>
               <li>Canada</li>
               <li>
-                <Link to="/locations" className="hover:text-white transition-colors font-semibold">
+                <a href="/locations" className="hover:text-white transition-colors font-semibold">
                   All Locations →
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -124,9 +123,9 @@ const Footer = () => {
               <p className="mt-1">Professional Website Design & Development</p>
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
+              <a href="/privacy" className="text-gray-300 hover:text-white transition-colors">
                 Privacy Policy
-              </Link>
+              </a>
               <a 
                 href="https://wa.me/447792145328"
                 target="_blank"

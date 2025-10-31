@@ -1,0 +1,176 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description = "Web design and SEO that generate clients. Fast websites, lead-focused design, Google Business Profile optimization, and transparent analytics.", canonical, ogImage = "/C logo.webp" } = Astro.props;
+const currentUrl = canonical || Astro.url.pathname;
+const fullUrl = `https://codapixel.com${currentUrl}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={fullUrl} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="CodaPixel" />
+    
+    <!-- Fonts - Optimized for performance (async loading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load fonts asynchronously to prevent render blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    <!-- Fallback script for browsers that don't support preload -->
+    <script is:inline>
+      !function(e){"use strict";var t=function(t,n,o){function i(e){return r.body?e():void setTimeout(function(){i(e)})}function d(){l.addEventListener&&l.removeEventListener("load",d),l.media=o||"all"}var r=e.document,l=e.createElement("link");if(n)l.href=n;else{if(!(r.currentScript instanceof Element))return;l.href=r.currentScript.getAttribute("href")}l.rel="preload",l.as="style",l.addEventListener("load",function(){this.rel="stylesheet"}),l.addEventListener("load",d),l.media="print",i(function(){r.head.appendChild(l)})};"undefined"!=typeof e?e.loadCSS=t:"undefined"!=typeof define?define(function(){return t}):(e.loadCSS=t)}("undefined"!=typeof global?global:this);
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73YRPF7CKR"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-73YRPF7CKR');
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={fullUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Professional Service Schema -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "CodaPixel",
+      "description": "Professional web design and SEO services in the UK. Fast websites that generate clients, Google Business Profile optimization, and transparent analytics.",
+      "url": "https://codapixel.com",
+      "telephone": "+44 7792 145328",
+      "email": "dorward.connor@gmail.com",
+      "priceRange": "££",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Ayr",
+          "sameAs": "https://en.wikipedia.org/wiki/Ayr"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Argyll and Bute",
+          "sameAs": "https://en.wikipedia.org/wiki/Argyll_and_Bute"
+        },
+        {
+          "@type": "City",
+          "name": "Prestwick",
+          "sameAs": "https://en.wikipedia.org/wiki/Prestwick"
+        },
+        {
+          "@type": "City",
+          "name": "Troon",
+          "sameAs": "https://en.wikipedia.org/wiki/Troon"
+        },
+        {
+          "@type": "City",
+          "name": "Kilmarnock",
+          "sameAs": "https://en.wikipedia.org/wiki/Kilmarnock"
+        },
+        {
+          "@type": "City",
+          "name": "Irvine",
+          "sameAs": "https://en.wikipedia.org/wiki/Irvine,_North_Ayrshire"
+        },
+        {
+          "@type": "City",
+          "name": "Glasgow",
+          "sameAs": "https://en.wikipedia.org/wiki/Glasgow"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ayr",
+        "addressRegion": "Ayrshire",
+        "addressCountry": "GB"
+      },
+      "sameAs": [],
+      "serviceType": [
+        "Web Design",
+        "Website Redesign",
+        "SEO",
+        "On-page SEO",
+        "Google Business Profile Optimization",
+        "Landing Page Design",
+        "Conversion Rate Optimization",
+        "Analytics & Conversion Tracking",
+        "Speed Optimization",
+        "Website Maintenance & Support"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Marketing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design",
+              "description": "Modern, fast websites built to convert visitors into leads"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO",
+              "description": "Rank higher in search and Google Maps to win nearby customers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Conversion Tracking",
+              "description": "Measure what matters with clean analytics and event tracking"
+            }
+          }
+        ]
+      }
+    })} />
+
+    <link rel="icon" type="image/webp" href="/C logo.webp" />
+  </head>
+
+  <body class="font-inter">
+    <Header client:visible />
+    <main>
+      <slot />
+    </main>
+    <Footer client:visible />
+  </body>
+</html>
+
+<style is:global>
+  @import '../index.css';
+</style>
+

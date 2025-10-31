@@ -32,7 +32,7 @@ Successfully completed comprehensive local SEO optimization for CodaPixel, a web
 ## Phase 1: Technical Foundation ✅
 
 ### Completed Tasks
-1. **robots.txt** - Updated with correct domain (codapixel.co.uk)
+1. **robots.txt** - Updated with correct domain (codapixel.com)
 2. **sitemap.xml** - Updated with all pages and correct lastmod dates
 3. **Canonical tags** - Added to index.html and all pages via Helmet
 4. **React Helmet** - Installed and configured in App.tsx

@@ -3,8 +3,7 @@ import { CardContent, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Code2, Search, Clock, CheckCircle } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
-import { Link } from "react-router-dom";
-import LottieLoader from "@/components/LottieLoader";
+// import LottieLoader from "@/components/LottieLoader"; // Commented out for performance testing
 
 const HomeServicesGrid = () => {
   const { tagline } = useBusiness();
@@ -96,12 +95,12 @@ const HomeServicesGrid = () => {
                     </div>
                     <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
                       <div className="w-full h-full">
-                          <LottieLoader 
+                          {/* <LottieLoader 
                             src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
                             style={{ width: '100%', height: '100%' }} 
                             autoplay 
                             loop
-                          />
+                          /> */}
                       </div>
                     </div>
                   </>
@@ -126,11 +125,11 @@ const HomeServicesGrid = () => {
                       ))}
                     </ul>
                   </div>
-                  <Link to="/contact" className="mt-auto">
+                  <a href="/contact" className="mt-auto">
                     <Button className={`w-full ${service.popular ? 'bg-black hover:bg-gray-900' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg py-3 font-figtree`}>
                         Get a Quote
                       </Button>
-                    </Link>
+                    </a>
                 </CardContent>
               </div>
             </motion.div>

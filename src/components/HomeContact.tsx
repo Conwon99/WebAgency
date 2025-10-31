@@ -5,12 +5,40 @@ import { useEffect } from "react";
 import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent } from "@/lib/analytics";
 
 const HomeContact = () => {
-  // Load Calendly script and set up event tracking
+  // Load Calendly script lazily when section comes into view
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.head.appendChild(script);
+    let hasLoaded = false;
+    
+    const loadCalendly = () => {
+      if (hasLoaded || document.querySelector('script[src*="calendly"]')) {
+        hasLoaded = true;
+        return;
+      }
+      
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.head.appendChild(script);
+      hasLoaded = true;
+    };
+    
+    // Load when section comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadCalendly();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: '100px' }
+    );
+    
+    const section = document.getElementById('contact-section');
+    if (section) {
+      observer.observe(section);
+    }
     
     // Set up Calendly event listeners
     const handleCalendlyEvent = (e: any) => {
@@ -27,9 +55,7 @@ const HomeContact = () => {
     window.addEventListener('message', handleCalendlyEvent);
     
     return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
+      observer.disconnect();
       window.removeEventListener('message', handleCalendlyEvent);
     };
   }, []);
@@ -48,9 +74,9 @@ const HomeContact = () => {
           >
             {/* Section Header */}
             <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-thicccboi font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-thicccboi font-bold text-gray-900 mb-6 leading-tight">
                 Book your <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent">free</span> website demo.
-              </h2>
+              </h1>
             </div>
             {/* Benefits removed per request */}
 

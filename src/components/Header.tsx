@@ -4,10 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackBookCall, trackCTA } from "@/lib/analytics";
-import { Link, useLocation } from "react-router-dom";
-
 const Header = () => {
-  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { name, phone, facebookUrl } = useBusiness();
 
@@ -64,7 +61,7 @@ const Header = () => {
       <div className="container mx-auto max-w-7xl px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img 
               src="/C logo.webp" 
               alt="CodaPixel Logo"
@@ -73,36 +70,36 @@ const Header = () => {
               height="48"
               loading="eager"
             />
-          </Link>
+          </a>
           
           {/* Right-aligned Navigation and CTA */}
           <div className="hidden md:flex items-center space-x-8">
             {/* Desktop Navigation */}
             <nav className="flex items-center space-x-8">
-              <Link 
-                to="/"
+              <a 
+                href="/"
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
-              </Link>
-              <Link 
-                to="/services"
+              </a>
+              <a 
+                href="/services"
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Services
-              </Link>
+              </a>
               <button 
                 onClick={() => handleScrollTo('portfolio')}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Portfolio
               </button>
-              <Link 
-                to="/contact"
+              <a 
+                href="/contact"
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
-              </Link>
+              </a>
             </nav>
 
             {/* Desktop CTA */}
@@ -132,33 +129,33 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-cleaning-border">
             <nav className="flex flex-col space-y-4 mt-4">
-              <Link 
-                to="/"
+              <a 
+                href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Home
-              </Link>
-              <Link 
-                to="/services"
+              </a>
+              <a 
+                href="/services"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Services
-              </Link>
+              </a>
               <button 
                 onClick={() => handleScrollToOnMobile('portfolio')}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Portfolio
               </button>
-              <Link 
-                to="/contact"
+              <a 
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-gray-800 hover:text-cleaning-primary font-figtree font-medium transition-colors"
               >
                 Contact
-              </Link>
+              </a>
             </nav>
             <div className="flex flex-col space-y-2 mt-4">
               <Button 

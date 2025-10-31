@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactBar from '../components/ContactBar';
+import HomeContact from '../components/HomeContact';
+---
+
+<Layout
+  title="Contact CodaPixel"
+  description="Book a discovery call. Fast replies."
+  canonical="/contact"
+  ogImage="/C logo.webp"
+>
+  <ContactBar client:visible />
+  <HomeContact client:idle />
+</Layout>
+

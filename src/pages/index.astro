@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import HomeContact from '../components/HomeContact';
+---
+
+<Layout
+  title="Web Design & SEO in Ayr | CodaPixel"
+  description="Websites that convert + SEO that ranks. Fast builds, GBP optimization, tracking."
+  canonical="/"
+  ogImage="/C logo.webp"
+>
+  <Hero client:visible />
+  <HomeContact client:idle />
+</Layout>
+
+<script is:inline>
+  // Track page view - will be handled by analytics script in Layout
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'page_view', {
+      event_category: 'Navigation',
+      event_label: 'Home Page',
+      timestamp: new Date().toISOString()
+    });
+  }
+</script>
+

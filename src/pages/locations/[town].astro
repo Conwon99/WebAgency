@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LocationTownPage from '../../components/pages/LocationTownPage';
+
+// Define the towns and cities that should be generated at build time
+export async function getStaticPaths() {
+  const locations = [
+    // Ayrshire towns
+    'ayr',
+    'prestwick',
+    'troon',
+    'kilmarnock',
+    'irvine',
+    'mauchline',
+    'maybole',
+    'girvan',
+    // Major Scottish cities
+    'glasgow',
+    'edinburgh',
+    'aberdeen',
+    'dundee',
+    'inverness',
+    'stirling',
+    'perth',
+    'dunfermline'
+  ];
+
+  return locations.map((town) => ({
+    params: { town },
+    props: { town }
+  }));
+}
+
+const { town } = Astro.params;
+const townName = town ? town.charAt(0).toUpperCase() + town.slice(1) : '';
+const canonicalUrl = `/locations/${town?.toLowerCase()}`;
+
+// Towns considered part of Ayrshire for breadcrumb context
+const ayrshireTowns = new Set([
+  'Ayr', 'Prestwick', 'Troon', 'Kilmarnock', 'Irvine', 'Mauchline', 'Maybole', 'Girvan'
+]);
+
+// Major Scottish cities (not in Ayrshire)
+const scottishCities = new Set([
+  'Glasgow', 'Edinburgh', 'Aberdeen', 'Dundee', 'Inverness', 'Stirling', 'Perth', 'Dunfermline'
+]);
+
+// Determine if location is in Ayrshire or a major Scottish city
+const isAyrshireTown = ayrshireTowns.has(townName);
+const isScottishCity = scottishCities.has(townName);
+
+// Create location-specific description
+let description = `Professional web design and SEO services in ${townName}.`;
+if (isAyrshireTown) {
+  description = `Professional web design and SEO services in ${townName}, Ayrshire. Fast websites, local SEO, GBP optimization, and conversion tracking. Serving ${townName} businesses.`;
+} else if (isScottishCity) {
+  description = `Professional web design and SEO services in ${townName}, Scotland. Fast websites, local SEO, GBP optimization, and conversion tracking. Serving ${townName} businesses.`;
+}
+
+// Build breadcrumb schema based on location type
+let breadcrumbSchema;
+if (isAyrshireTown) {
+  breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://codapixel.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://codapixel.com/locations" },
+      { "@type": "ListItem", "position": 3, "name": "Scotland", "item": "https://codapixel.com/locations/scotland" },
+      { "@type": "ListItem", "position": 4, "name": "Ayrshire", "item": "https://codapixel.com/locations/ayrshire" },
+      { "@type": "ListItem", "position": 5, "name": townName || "Town", "item": `https://codapixel.com${canonicalUrl}` }
+    ]
+  };
+} else if (isScottishCity) {
+  breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://codapixel.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://codapixel.com/locations" },
+      { "@type": "ListItem", "position": 3, "name": "Scotland", "item": "https://codapixel.com/locations/scotland" },
+      { "@type": "ListItem", "position": 4, "name": townName || "City", "item": `https://codapixel.com${canonicalUrl}` }
+    ]
+  };
+} else {
+  breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://codapixel.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://codapixel.com/locations" },
+      { "@type": "ListItem", "position": 3, "name": townName || "Location", "item": `https://codapixel.com${canonicalUrl}` }
+    ]
+  };
+}
+---
+
+<Layout
+  title={`Web Design & SEO in ${townName} | CodaPixel`}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage="/C logo.webp"
+>
+  <LocationTownPage town={town || ''} client:visible />
+</Layout>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+
+

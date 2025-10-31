@@ -65,11 +65,11 @@ All pages have unique, descriptive meta descriptions:
 
 All pages have proper canonical URLs:
 
-1. **Homepage**: `https://codapixel.co.uk/`
-2. **Services**: `https://codapixel.co.uk/services`
-3. **Reviews**: `https://codapixel.co.uk/reviews`
-4. **Pricing**: `https://codapixel.co.uk/pricing`
-5. **Contact**: `https://codapixel.co.uk/contact`
+1. **Homepage**: `https://codapixel.com/`
+2. **Services**: `https://codapixel.com/services`
+3. **Reviews**: `https://codapixel.com/reviews`
+4. **Pricing**: `https://codapixel.com/pricing`
+5. **Contact**: `https://codapixel.com/contact`
 
 All are unique and properly formatted.
 
@@ -94,7 +94,7 @@ All are unique and properly formatted.
    <Helmet>
      <title>Portfolio | Web Design Projects | CodaPixel</title>
      <meta name="description" content="View our portfolio of web design and SEO projects. Real results for Ayrshire businesses." />
-     <link rel="canonical" href="https://codapixel.co.uk/gallery" />
+     <link rel="canonical" href="https://codapixel.com/gallery" />
    </Helmet>
    ```
 
@@ -103,7 +103,7 @@ All are unique and properly formatted.
    <Helmet>
      <title>Privacy Policy | CodaPixel</title>
      <meta name="description" content="CodaPixel privacy policy and data protection information." />
-     <link rel="canonical" href="https://codapixel.co.uk/privacy" />
+     <link rel="canonical" href="https://codapixel.com/privacy" />
    </Helmet>
    ```
 

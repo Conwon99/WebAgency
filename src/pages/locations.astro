@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LocationsPage from '../components/pages/LocationsPage';
+---
+
+<Layout
+  title="Locations | Web Design & SEO Services | CodaPixel"
+  description="Professional web design and SEO services across Scotland, England, Ireland, Wales, USA, and Canada."
+  canonical="/locations"
+  ogImage="/C logo.webp"
+>
+  <LocationsPage client:visible />
+</Layout>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://codapixel.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://codapixel.com/locations" }
+  ]
+})} />
+

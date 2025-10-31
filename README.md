@@ -1,18 +1,18 @@
-# CodaPixel - Web Design & Local SEO Agency
+# CodaPixel - Web Design & SEO Agency
 
-A modern, responsive website for CodaPixel - a professional web design and local SEO agency serving Ayrshire and surrounding areas in Scotland.
+A modern, responsive website for CodaPixel - a professional web design and SEO agency serving businesses across the UK, Ireland, North America, and beyond.
 
 ## Features
 
-- **Modern Design**: Clean, professional design with the brand's teal-blue color scheme
+- **Modern Design**: Clean, professional design with performance-optimized animations
 - **Responsive**: Fully responsive design that works on all devices
-- **SEO Optimized**: Proper meta tags, structured data, and sitemap
-- **Contact Forms**: Easy-to-use contact forms with validation
-- **Service Pages**: Detailed information about all cleaning services
-- **Pricing**: Transparent pricing with clear disclaimers
-- **Reviews**: Customer testimonials and Facebook integration
-- **Gallery**: Before/after image showcase (placeholder ready)
-- **Accessibility**: WCAG compliant with proper contrast and focus states
+- **SEO Optimized**: Proper meta tags, structured data, sitemap, and security headers
+- **Performance**: WebP images, lazy loading, code splitting, and optimized JavaScript
+- **Service Pages**: Detailed information about web design and SEO services
+- **Location Pages**: Dynamic location-specific pages for better local SEO
+- **Portfolio**: Showcase of client projects and results
+- **Reviews**: Customer testimonials and Google reviews
+- **Accessibility**: WCAG compliant with proper ARIA labels and semantic HTML
 
 ## Tech Stack
 
@@ -37,7 +37,7 @@ A modern, responsive website for CodaPixel - a professional web design and local
 1. Clone the repository
 ```bash
 git clone <repository-url>
-cd ayrshire-roof-design
+cd sparkles-copy
 ```
 
 2. Install dependencies
@@ -73,11 +73,12 @@ src/
 ├── pages/              # Page components
 │   ├── Index.tsx       # Homepage
 │   ├── Services.tsx    # Services page
-│   ├── Pricing.tsx     # Pricing page
 │   ├── Reviews.tsx     # Reviews page
-│   ├── Gallery.tsx     # Gallery page
+│   ├── Gallery.tsx     # Portfolio page
 │   ├── Contact.tsx     # Contact page
-│   └── Privacy.tsx     # Privacy policy
+│   ├── Privacy.tsx     # Privacy policy
+│   ├── Locations.tsx   # Locations index
+│   └── Location*.tsx   # Location-specific pages
 ├── hooks/              # Custom React hooks
 │   └── useBusiness.ts  # Business data hook
 ├── lib/                # Utility functions
@@ -97,7 +98,7 @@ Update business details in `src/content/business.json`:
 {
   "name": "CodaPixel",
   "location": "Ayr, United Kingdom",
-  "phone": "+44 7483 879647",
+  "phone": "+44 7792 145328",
   "phoneVerified": false,
   "email": "dorward.connor@gmail.com",
   "tagline": "Web design and local SEO that generate clients.",
@@ -123,32 +124,32 @@ Update SEO settings in `index.html`:
 - Call-to-action buttons
 
 ### Services (/services)
+- Web Design in a Day (£79/month)
+- Custom Website (£249 starting from)
+- SEO & Paid Ads (£299/month)
 - Detailed service descriptions
-- What's included for each service
 - Contact CTAs
-
-### Pricing (/pricing)
-- Pricing cards with "from" prices
-- Service descriptions
-- Important disclaimers
-- Quote request CTAs
 
 ### Reviews (/reviews)
 - Customer testimonials
+- Google reviews integration
 - Star ratings
-- Facebook page integration
 - Service tags
 
-### Gallery (/gallery)
-- Before/after image grid
-- Placeholder images ready for real photos
-- Image categories and descriptions
+### Portfolio (/gallery)
+- Real client project showcases
+- WebP optimized images
+- Project categories and descriptions
+
+### Locations (/locations)
+- UK regions (Scotland, England, Ireland, Wales)
+- North America coverage
+- Dynamic location-specific pages for local SEO
 
 ### Contact (/contact)
-- Contact form with validation
-- Phone and Facebook contact options
-- Service area information
-- Why choose us section
+- Calendly booking integration
+- Phone and WhatsApp contact options
+- Fast response guarantee
 
 ### Privacy (/privacy)
 - Comprehensive privacy policy
@@ -160,14 +161,14 @@ Update SEO settings in `index.html`:
 The project uses a custom design system with Tailwind CSS:
 
 ### Colors
-- Primary: `#1F7A8C` (teal-blue)
-- Accent: `#F2C94C` (warm highlight)
-- Text: `#0B1320` (dark text)
-- Background: `#F7F9FC` (light background)
-- Border: `#E6EDF3` (subtle borders)
+- Primary: `#3b82f6` (blue)
+- Background: `#eae6e8` (off-white)
+- Text: Dark grays
+- CTA: Blue gradient
 
 ### Typography
-- Font: Inter (Google Fonts)
+- Primary Font: Figtree (Google Fonts)
+- Display Font: THICCCBOI (custom TTF)
 - Responsive text sizing
 - Proper line heights and spacing
 

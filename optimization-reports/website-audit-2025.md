@@ -1,6 +1,6 @@
 # Website SEO Audit Report - CodaPixel
 **Date:** January 15, 2025
-**Domain:** https://codapixel.co.uk
+**Domain:** https://codapixel.com
 
 ## Executive Summary
 Overall SEO health: **Good** ✅

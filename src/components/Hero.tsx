@@ -6,8 +6,7 @@ import { CheckCircle, ChevronLeft, ChevronRight, Code2, Search, Clock } from "lu
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackBookCall, trackWhatsApp, trackPhoneCall, trackCalendlyEvent, trackSectionView } from "@/lib/analytics";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import LottieLoader from "@/components/LottieLoader";
+// import LottieLoader from "@/components/LottieLoader"; // Commented out for performance testing
 
 interface HeroProps {
   location?: string;
@@ -66,11 +65,11 @@ const Hero = ({ location }: HeroProps = {}) => {
   ];
   
   const headline = location 
-    ? <>Web Design & SEO<br />for <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">{location} Businesses</span></>
+    ? <>Web Design & SEO<br />for <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">{location === 'Scotland' ? 'Scottish Businesses' : `${location} Businesses`}</span></>
     : <>Websites that<br />generate clients - from just <span className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent font-bold">£79/month</span></>;
   
   const trustNote = location 
-    ? `Trusted by ${location} businesses`
+    ? `Trusted by ${location === 'Scotland' ? 'Scottish' : location} businesses`
     : "Trusted by hundreds of businesses";
 
   // Track section views when they come into viewport
@@ -301,7 +300,7 @@ const Hero = ({ location }: HeroProps = {}) => {
             </motion.div>
             </div>
             
-            {/* Hero Animation */}
+            {/* Hero Image */}
             <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
@@ -310,11 +309,15 @@ const Hero = ({ location }: HeroProps = {}) => {
                 viewport={{ once: true, amount: 0.7 }}
                 className="relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto flex items-center justify-center"
               >
-                <LottieLoader 
-                  src="https://lottie.host/8fc39289-f2b3-499d-8c21-9a0e0298e20c/zyltaQ3EPT.lottie" 
-                  style={{ width: '100%', height: '100%', maxWidth: '1125px', maxHeight: '1125px' }} 
-                  autoplay 
-                  loop
+                <img
+                  src="/Computer Hero background removed.png"
+                  alt="Web design and development showcase"
+                  width="1125"
+                  height="1125"
+                  className="w-full h-auto max-w-full object-contain"
+                  loading="eager"
+                  decoding="async"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1125px"
                 />
               </motion.div>
             </div>
@@ -379,6 +382,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                   height="56"
                   className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
                   style={{ filter: 'brightness(0) invert(1)' }}
+                  decoding="async"
                 />
               </div>
             ))}
@@ -402,6 +406,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                   height="56"
                   className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
                   style={{ filter: 'brightness(0) invert(1)' }}
+                  decoding="async"
                   />
                 </div>
             ))}
@@ -545,8 +550,8 @@ const Hero = ({ location }: HeroProps = {}) => {
             >
               <video 
                 className="w-full h-auto"
-                preload="metadata"
-                poster=""
+                preload="none"
+                loading="lazy"
                 autoPlay
                 muted
                 loop
@@ -557,7 +562,7 @@ const Hero = ({ location }: HeroProps = {}) => {
                   clipPath: 'inset(5% 0 5% 0)'
                 }}
               >
-                <source src="/webvideo.mp4" type="video/mp4" />
+                <source src="/webvideo.webm" type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </motion.div>
@@ -643,16 +648,26 @@ const Hero = ({ location }: HeroProps = {}) => {
                 </div>
               </div>
 
-              {/* Right - Animation */}
+              {/* Right - Image */}
               <div className="flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto overflow-hidden flex items-center justify-center">
-                  <LottieLoader 
-                    src="https://lottie.host/72369cf7-6a3e-4ed9-b688-83310de3fca7/drjTHpg6LN.lottie" 
-                    style={{ width: '100%', height: '100%', maxWidth: '480px', maxHeight: '480px' }} 
-                    autoplay 
-                    loop
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto overflow-hidden flex items-center justify-center"
+                >
+                  <img
+                    src="/rokman.png"
+                    alt="Websites that generate clients"
+                    width="480"
+                    height="480"
+                    className="w-full h-auto max-w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 480px"
                   />
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -690,8 +705,12 @@ const Hero = ({ location }: HeroProps = {}) => {
               <img
                 src="/phone.webp"
                 alt="Mobile analytics preview"
-                className="mx-auto lg:mx-0 max-w-full w-[800px] sm:w-[1000px] md:w-[1200px] lg:w-[1400px] xl:w-[1600px]"
+                width="665"
+                height="1216"
+                className="mx-auto lg:mx-0 max-w-full w-[665px] sm:w-[800px] md:w-[1000px] lg:w-[1200px]"
                 loading="lazy"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px"
+                decoding="async"
                 style={{ backgroundColor: 'transparent' }}
               />
             </motion.div>
@@ -744,7 +763,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/able_compressed.webp" 
                       alt="Able Health Website" 
+                      width="665"
+                      height="481"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -759,7 +783,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/tassecoffeeco.webp" 
                       alt="Tasse Coffee Co Website" 
+                      width="665"
+                      height="388"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -774,7 +803,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/holistics71.webp" 
                       alt="Holistics71 Website" 
+                      width="665"
+                      height="388"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -789,7 +823,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/rbjoinery.webp" 
                       alt="RB Joinery Website" 
+                      width="665"
+                      height="388"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -804,7 +843,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/proroof.webp" 
                       alt="ProRoof Website" 
+                      width="665"
+                      height="405"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -819,7 +863,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                     <img 
                       src="/Portfolio/sparklessite.webp" 
                       alt="Sparkle's Cleaning Service Website" 
+                      width="665"
+                      height="389"
                       className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      decoding="async"
                     />
                   </div>
                   <div className="p-6">
@@ -887,12 +936,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                       </div>
                       <div className="absolute -top-12 -right-12 w-64 h-64 z-0 opacity-80 pointer-events-none overflow-hidden">
                         <div className="w-full h-full">
-                          <LottieLoader 
+                          {/* <LottieLoader 
                             src="https://lottie.host/cc114657-4a04-4659-bc22-5d6419171617/F0K7XG9usz.lottie" 
                             style={{ width: '100%', height: '100%' }} 
                             autoplay 
                             loop
-                          />
+                          /> */}
                         </div>
                       </div>
                     </>
@@ -917,11 +966,11 @@ const Hero = ({ location }: HeroProps = {}) => {
                         ))}
                       </ul>
                     </div>
-                    <Link to="/contact" className="mt-auto">
+                    <a href="/contact" className="mt-auto">
                       <Button className={`w-full ${service.popular ? 'bg-black hover:bg-gray-900' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg py-3 font-figtree`}>
                           Get a Quote
                         </Button>
-                      </Link>
+                      </a>
                   </CardContent>
                 </div>
               </motion.div>
@@ -985,12 +1034,12 @@ const Hero = ({ location }: HeroProps = {}) => {
                   {/* Profile Picture */}
                   <div className="flex justify-center mb-6 relative z-10">
                     <div className="w-16 h-16 bg-yellow-300 rounded-full flex items-center justify-center">
-                      <LottieLoader 
+                      {/* <LottieLoader 
                         src="https://lottie.host/d5d62b25-5fff-4af3-bfbd-f07d8d6b9e87/zZUgNVmBVU.lottie" 
                         style={{ width: '64px', height: '64px' }} 
                         autoplay 
                         loop
-                      />
+                      /> */}
                     </div>
                   </div>
                   
